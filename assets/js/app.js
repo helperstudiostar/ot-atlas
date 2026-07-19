@@ -1051,6 +1051,20 @@
       sb.setAttribute("aria-label", "Share or copy a link to this condition");
       sb.title = "Share / copy link";
       sb.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3v11M8 7l4-4 4 4M5 12v7a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      // F57: print a client handout of this condition (drawer-only print view)
+      const pb = document.createElement("button");
+      pb.type = "button"; pb.className = "icon-btn drawer-print";
+      pb.setAttribute("aria-label", "Print this condition as a handout");
+      pb.title = "Print handout";
+      pb.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 8V4h10v4M7 17H5a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-2M7 14h10v6H7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      dHead.appendChild(pb);
+      pb.addEventListener("click", () => {
+        document.body.classList.add("print-focus");
+        const done = () => { document.body.classList.remove("print-focus"); window.removeEventListener("afterprint", done); };
+        window.addEventListener("afterprint", done);
+        window.print();
+        setTimeout(done, 1000); // safari fallback: afterprint can be unreliable
+      });
       dHead.appendChild(sb);
       sb.addEventListener("click", () => {
         const url = location.href;
@@ -1227,6 +1241,102 @@
     }));
     draw();
   }
+
+  /* ---------- F57 STUDY CARDS (chapter 16 — learn it cold) ---------- */
+  // Flashcards auto-generated from the atlas's own data — no separate content to maintain.
+  let studyDeckKey = "all", studyCards = [], studyIdx = 0, studyKnown = 0, studyAgainCount = 0, studyRevealed = false;
+  function buildStudyDeck(key) {
+    const cards = [];
+    const add = (cat, q, a) => cards.push({ cat, q, a });
+    if (key === "all" || key === "conditions") window.OT.conditions.forEach(c => {
+      add("Conditions", `What is <strong>${c.name}</strong>, and how does it affect daily life?`,
+        `<p>${c.desc}</p><p><strong>Impact.</strong> ${c.impact}</p>`);
+      add("Conditions", `OT&rsquo;s role in <strong>${c.name}</strong> — name the core interventions.`,
+        listHTML(c.ot.slice(0, 5)) + (c.evidence ? `<p class="study-ev">Evidence for OT here: ${c.evidence.strength}, ${c.evidence.confidence} confidence.</p>` : ""));
+    });
+    if (key === "all" || key === "assessments") window.OT.assessments.forEach(a => {
+      add("Assessments", `<strong>${escapeHTML(a.name)}</strong>${a.abbr && a.abbr !== "—" ? ` (${escapeHTML(a.abbr)})` : ""} — what does it measure, and for whom?`,
+        `<p><strong>Measures.</strong> ${a.measures}</p><p><strong>Population.</strong> ${a.pop}</p>`);
+    });
+    if ((key === "all" || key === "treatments") && window.OT.interventions) window.OT.interventions.entries.forEach(e => {
+      add("Treatments", `<strong>${escapeHTML(e.name)}</strong> — what is it, and how strong is the evidence?`,
+        `${e.what ? `<p>${e.what}</p>` : ""}${e.evidence ? `<p><strong>Evidence.</strong> ${e.evidence.strength}, ${e.evidence.confidence} confidence.${e.evidence.note ? " " + e.evidence.note : ""}</p>` : ""}`);
+    });
+    if (key === "all" || key === "glossary") RES().glossary.forEach(g => {
+      add("Glossary", `Define: <strong>${escapeHTML(g.t)}</strong>`, `<p>${g.d}</p>`);
+    });
+    for (let i = cards.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [cards[i], cards[j]] = [cards[j], cards[i]]; }
+    return cards;
+  }
+  function studyCurrent() { return studyCards[studyIdx]; }
+  function studyPaint() {
+    const card = studyCurrent();
+    const stage = $("#studyStage");
+    if (!stage) return;
+    if (!card) {
+      stage.innerHTML = `<div class="study-done">
+        <p class="study-done-head">Deck complete.</p>
+        <p>${studyKnown} known first try · ${studyAgainCount} sent back for review.</p>
+        <button type="button" class="btn btn-primary" id="studyRestart">Shuffle &amp; go again</button>
+      </div>`;
+      const r = $("#studyRestart"); if (r) r.addEventListener("click", () => startStudy(studyDeckKey));
+      announce("Deck complete.");
+      return;
+    }
+    stage.innerHTML = `
+      <p class="study-meta"><span class="study-cat">${card.cat}</span><span class="study-progress">${studyIdx + 1} of ${studyCards.length} · ${studyKnown} known</span></p>
+      <div class="study-q">${card.q}</div>
+      <div class="study-a${studyRevealed ? " revealed" : ""}" ${studyRevealed ? "" : "hidden"}>${card.a}</div>
+      <div class="study-controls">
+        ${studyRevealed
+          ? `<button type="button" class="btn btn-ghost" id="studyAgain">Review again <kbd>1</kbd></button>
+             <button type="button" class="btn btn-primary" id="studyKnew">Knew it <kbd>2</kbd></button>`
+          : `<button type="button" class="btn btn-primary" id="studyReveal">Reveal answer <kbd>Space</kbd></button>`}
+      </div>`;
+    const rv = $("#studyReveal"), ag = $("#studyAgain"), kn = $("#studyKnew");
+    if (rv) rv.addEventListener("click", studyReveal);
+    if (ag) ag.addEventListener("click", () => studyAnswer(false));
+    if (kn) kn.addEventListener("click", () => studyAnswer(true));
+  }
+  function studyReveal() { if (studyRevealed || !studyCurrent()) return; studyRevealed = true; studyPaint(); }
+  function studyAnswer(knew) {
+    if (!studyRevealed || !studyCurrent()) return;
+    if (knew) { studyKnown++; }
+    else { studyAgainCount++; studyCards.push(studyCurrent()); } // recycle to the end of the deck
+    studyIdx++; studyRevealed = false; studyPaint();
+  }
+  function startStudy(key) {
+    studyDeckKey = key; studyCards = buildStudyDeck(key);
+    studyIdx = 0; studyKnown = 0; studyAgainCount = 0; studyRevealed = false;
+    studyPaint();
+  }
+  function renderStudy() {
+    const decks = [["all", "Everything"], ["conditions", "Conditions"], ["assessments", "Assessments"], ["treatments", "Treatments"], ["glossary", "Glossary"]];
+    main.innerHTML = `<div class="page">
+      <p class="eyebrow">Learn it cold</p>
+      <h1 class="page-title">Study <em>cards</em></h1>
+      <p class="lede">Flashcards generated from the atlas itself — every condition, assessment, treatment and glossary term you've been reading, turned into recall practice. Cards you miss come back around until they stick. <span class="muted">Space reveals · 1 = review again · 2 = knew it.</span></p>
+      <div class="chip-row" id="studyDecks">
+        ${decks.map(([k, l]) => `<button class="chip ${studyDeckKey === k ? "active" : ""}" data-deck="${k}">${l}</button>`).join("")}
+      </div>
+      <div class="study-stage" id="studyStage" aria-live="polite"></div>
+      ${pageFoot("study")}
+    </div>`;
+    $$("#studyDecks .chip").forEach(ch => ch.addEventListener("click", () => {
+      $$("#studyDecks .chip").forEach(x => x.classList.toggle("active", x === ch));
+      startStudy(ch.dataset.deck);
+    }));
+    startStudy(studyDeckKey);
+  }
+  // Keyboard shortcuts — only on the study route, never while typing or in an overlay.
+  document.addEventListener("keydown", e => {
+    if (!location.hash.startsWith("#/study")) return;
+    if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+    if (document.querySelector(".drawer:not([hidden]), #searchOverlay:not([hidden])")) return;
+    if (e.key === " ") { e.preventDefault(); studyReveal(); }
+    else if (e.key === "1") studyAnswer(false);
+    else if (e.key === "2") studyAnswer(true);
+  });
 
   /* ---------- F53 THE TREATMENTS (chapter 15 — treatments & protocols) ---------- */
   let txFilter = "all", txStrength = "all", txQuery = "";
@@ -1441,6 +1551,12 @@
       <div class="deflist" id="glossList"></div>
 
       <hr class="divider"/>
+      <h2>Abbreviation decoder</h2>
+      <p class="muted">The shorthand you'll meet in charts, evals and fieldwork — ${window.OT.abbreviations ? window.OT.abbreviations.length : 0} entries.</p>
+      <div class="field" style="max-width:420px"><input type="text" id="abbrSearch" placeholder="Decode an abbreviation (e.g., WBAT, PLOF, CGA)…" aria-label="Search abbreviations"></div>
+      <div class="deflist" id="abbrList"></div>
+
+      <hr class="divider"/>
       <h2>Accessibility</h2>
       <p class="muted">Access is core to OT — so this atlas aims to be usable by everyone. It targets <strong>WCAG&nbsp;2.1 AA</strong>.</p>
       <div class="grid g2" style="margin-top:8px;align-items:start">
@@ -1482,6 +1598,17 @@
     };
     $("#glossSearch").addEventListener("input", e => { glossQuery = e.target.value; draw(); });
     draw();
+    // F57: abbreviation decoder (same deflist pattern as the glossary)
+    const drawAbbr = () => {
+      const A = window.OT.abbreviations || [];
+      const q = ($("#abbrSearch").value || "").trim().toLowerCase();
+      const items = A.filter(x => !q || (x.a + " " + x.full + " " + (x.note || "")).toLowerCase().includes(q));
+      $("#abbrList").innerHTML = items.length
+        ? items.map(x => `<div class="row"><dt>${escapeHTML(x.a)}</dt><dd><strong>${escapeHTML(x.full)}</strong>${x.note ? ` — ${escapeHTML(x.note)}` : ""}</dd></div>`).join("")
+        : `<p class="muted">Nothing matches.</p>`;
+    };
+    $("#abbrSearch").addEventListener("input", drawAbbr);
+    drawAbbr();
   }
 
   /* ---------- CLIENTS & FAMILIES ---------- */
@@ -1782,6 +1909,7 @@
     M().framesOfReference.forEach(fr => idx.push({ cat: "Frame of reference", title: fr.name, desc: fr.basis, route: "models", action: () => go("models") }));
     R().types.forEach(t => idx.push({ cat: "Clinical reasoning", title: t.name, desc: t.body, route: "reasoning", action: () => go("reasoning") }));
     RES().glossary.forEach(g => idx.push({ cat: "Glossary", title: g.t, desc: g.d, route: "resources", action: () => { glossQuery = g.t; go("resources"); } }));
+    if (window.OT.abbreviations) window.OT.abbreviations.forEach(x => idx.push({ cat: "Abbreviation", title: x.a + " — " + x.full, desc: x.note || "", route: "resources", action: () => go("resources") }));
     window.OT.videos.buckets.forEach(b => b.items.forEach(v => idx.push({ cat: "Video", title: v.title, desc: v.desc || b.title, route: "videos", action: () => go("videos") })));
     F().domain.aspects.forEach(a => idx.push({ cat: "Domain", title: a.name, desc: a.tagline, route: "pillars", action: () => go("pillars") }));
     F().domain.aspects.find(a => a.key === "occupations").children.forEach(ch => idx.push({ cat: "Area of occupation", title: ch.name, desc: ch.desc, route: "pillars", action: () => go("pillars") }));
@@ -1789,7 +1917,7 @@
     if (window.OT.directory) window.OT.directory.entries.forEach(e => idx.push({ cat: "Directory", title: e.name, desc: e.focus || "", route: "directory", action: () => { dirQuery = e.name; dirFilter = "all"; go("directory"); } }));
     if (window.OT.bulletin) window.OT.bulletin.entries.forEach(e => idx.push({ cat: "What's changed", title: e.title, desc: e.summary || "", route: "bulletin", action: () => { bulQuery = e.title; bulCat = "all"; bulRegion = "all"; go("bulletin"); } }));
     if (window.OT.interventions) window.OT.interventions.entries.forEach(e => idx.push({ cat: "Treatment", title: e.name + (e.aka ? " (" + e.aka + ")" : ""), desc: e.what ? e.what.slice(0, 110) : "", route: "interventions", action: () => { txQuery = e.name; txFilter = "all"; txStrength = "all"; go("interventions"); } }));
-    [["What is OT", "foundations"], ["History of OT", "foundations"], ["The OT profession & settings", "foundations"], ["EBP & PICO", "evidence"], ["SOAP notes & goals", "reasoning"], ["For clients & families", "clients"], ["Interactive toolkit", "toolkit"]].forEach(p => idx.push({ cat: "Page", title: p[0], desc: "", route: p[1], action: () => go(p[1]) }));
+    [["What is OT", "foundations"], ["History of OT", "foundations"], ["The OT profession & settings", "foundations"], ["EBP & PICO", "evidence"], ["SOAP notes & goals", "reasoning"], ["For clients & families", "clients"], ["Interactive toolkit", "toolkit"], ["Study cards (flashcards)", "study"]].forEach(p => idx.push({ cat: "Page", title: p[0], desc: "", route: p[1], action: () => go(p[1]) }));
     searchIndex = idx;
     return idx;
   }
@@ -1891,7 +2019,7 @@
   const routes = {
     home: renderHome, foundations: renderFoundations, pillars: renderPillars,
     models: renderModels, reasoning: renderReasoning, evidence: renderEvidence,
-    conditions: renderConditions, assessments: renderAssessments, directory: renderDirectory, bulletin: renderBulletin, interventions: renderInterventions, videos: renderVideos,
+    conditions: renderConditions, assessments: renderAssessments, directory: renderDirectory, bulletin: renderBulletin, interventions: renderInterventions, study: renderStudy, videos: renderVideos,
     resources: renderResources, clients: renderClients, toolkit: renderToolkit
   };
   // F37: pageFoot doubles as a map-legend colophon — reviewed date, typeface credits, an AA
@@ -1918,7 +2046,7 @@
   function wireGo(root = main) { $$("[data-go]", root).forEach(b => b.addEventListener("click", () => go(b.dataset.go))); }
   window.__otGo = go;
 
-  const ROUTE_TITLES = { home: "Occupational therapy, in depth", foundations: "Foundations & the OT profession", pillars: "Domain & the OT process", models: "Models & frames of reference", reasoning: "Clinical reasoning", evidence: "Evidence-based practice", conditions: "Conditions library", assessments: "Assessments & measures", videos: "Video library", resources: "Resources & glossary", clients: "For clients & families", toolkit: "Interactive toolkit", interventions: "Treatments & protocols" };
+  const ROUTE_TITLES = { home: "Occupational therapy, in depth", foundations: "Foundations & the OT profession", pillars: "Domain & the OT process", models: "Models & frames of reference", reasoning: "Clinical reasoning", evidence: "Evidence-based practice", conditions: "Conditions library", assessments: "Assessments & measures", videos: "Video library", resources: "Resources & glossary", clients: "For clients & families", toolkit: "Interactive toolkit", interventions: "Treatments & protocols", study: "Study cards" };
   function setMeta(title, desc) {
     document.title = title ? `${title} — The OT Atlas` : "The OT Atlas — Occupational Therapy, in depth";
     if (desc != null) {
@@ -2013,7 +2141,8 @@
     clients: "11 · GET HELP & DO", toolkit: "12 · GET HELP & DO",
     directory: "13 · REFERENCE",  // the appendix — external resources, added 2026-07 (F50)
     bulletin: "14 · REFERENCE",   // notes to this edition — what's changed, added 2026-07 (F51)
-    interventions: "15 · REFERENCE" // treatments & protocols compendium, added 2026-07 (F53)
+    interventions: "15 · REFERENCE", // treatments & protocols compendium, added 2026-07 (F53)
+    study: "16 · GET HELP & DO"      // study cards — flashcards from the atlas's own data (F57)
   };
   // F37: chapter display names for the pageFoot() "Continue the atlas →" link — mirrors the
   // nav-list wording (index.html), NOT ROUTE_TITLES (that map drives <title>/meta and is missing
@@ -2024,7 +2153,7 @@
     conditions: "Conditions library", assessments: "Assessments & measures", videos: "Video library",
     resources: "Resources & glossary", clients: "For clients & families", toolkit: "Interactive toolkit",
     directory: "The OT directory", bulletin: "What's changed",
-    interventions: "Treatments & protocols"
+    interventions: "Treatments & protocols", study: "Study cards"
   };
   // F35: nav-group → chapter accent slug (drives #main[data-chapter] → --chapter-accent).
   // ORIENTATION teal / THE FRAMEWORK plum / REFERENCE ochre / GET HELP & DO clay.

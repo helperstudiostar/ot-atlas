@@ -1242,6 +1242,11 @@ kbd { font-family: var(--mono); font-size: var(--text-sm); font-variant-numeric:
 
 /* print */
 @media print {
+  /* F57 handout mode: print only the open drawer, as a clean client handout */
+  body.print-focus > *:not(#drawerEl) { display: none !important; }
+  body.print-focus #drawerEl { position: static !important; width: 100% !important; max-width: none !important; height: auto !important; max-height: none !important; overflow: visible !important; box-shadow: none !important; border: 0 !important; transform: none !important; }
+  body.print-focus #drawerEl .drawer-share, body.print-focus #drawerEl .drawer-print, body.print-focus #drawerEl .close { display: none !important; }
+
   /* Force readable light tokens regardless of theme (this block is after the dark block → wins). */
   :root, [data-theme="dark"] {
     --paper:#fff; --paper-2:#fff; --card:#fff; --bg:#fff; --surface:#fff;
@@ -1275,3 +1280,19 @@ kbd { font-family: var(--mono); font-size: var(--text-sm); font-variant-numeric:
   a[href^="http"]::after { content:" (" attr(href) ")"; font-size:.82em; color:#555; word-break:break-all; }
   a[href^="#"]::after, a[href^="./"]::after, a[href^="/"]::after { content:"" !important; }
 }
+
+/* ============== F57 STUDY CARDS — a card is true containment; it earns its rules ============== */
+.study-stage { margin-top: 30px; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--line); padding: 22px 4px 26px; min-height: 320px; display: flex; flex-direction: column; }
+.study-meta { display: flex; justify-content: space-between; align-items: baseline; margin: 0 0 18px; }
+.study-cat { font-family: var(--mono); font-size: var(--text-2xs); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--clay-deep); }
+.study-progress { font-family: var(--mono); font-size: var(--text-xs); color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+.study-q { font-family: var(--serif); font-size: 1.45rem; line-height: 1.35; color: var(--ink); max-width: 30ch; }
+.study-a { margin-top: 20px; padding-top: 18px; border-top: 1px dotted var(--ink-faint); color: var(--ink-soft); max-width: 62ch; }
+.study-a p { margin: 0 0 8px; }
+.study-a strong { color: var(--ink); }
+.study-ev { font-family: var(--mono); font-size: var(--text-xs); color: var(--ink-faint); }
+.study-controls { margin-top: auto; padding-top: 24px; display: flex; gap: 12px; }
+.study-controls kbd { font-family: var(--mono); font-size: var(--text-2xs); opacity: .6; margin-left: 6px; }
+.study-done { margin: auto; text-align: center; }
+.study-done-head { font-family: var(--serif); font-size: 1.4rem; margin: 0 0 6px; color: var(--ink); }
+@media (max-width: 640px) { .study-q { font-size: 1.2rem; } .study-controls { flex-direction: column; } }

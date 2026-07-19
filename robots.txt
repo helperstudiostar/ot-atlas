@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://helperstudiostar.github.io/ot-atlas/sitemap.xml
