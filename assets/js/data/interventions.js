@@ -90,7 +90,7 @@ OT.interventions = {
       protocol: "Individualised to the person's goals, task and context — no universal frequency/duration applies.",
       evidence: { strength: "moderate", confidence: "medium",
         note: "Moderate-to-strong across a large heterogeneous base: the AOTA stroke evidence review (39 studies, 26 Level I) and AOTA Stroke Practice Guideline support occupation-based ADL/IADL retraining as central to functional recovery.",
-        sources: [{ label: "AOTA Stroke Practice Guideline / AJOT review", url: "https://research.aota.org/ajot", type: "guideline" }] },
+        sources: [{ label: "AOTA Stroke Practice Guideline / AJOT review", url: "https://journals.sagepub.com/home/aota", type: "guideline" }] },
       caution: "'Occupation-based' quality varies widely — effectiveness depends on genuine task-specificity and real-world context, not rote exercise relabelled as ADL practice." },
 
     { id: "visual-scanning-hemianopia", sec: "neuro", name: "Visual Scanning Training (homonymous hemianopia)", aka: "VST",
@@ -125,7 +125,7 @@ OT.interventions = {
       what: "A technique that prevents the learner generating incorrect responses during acquisition (immediate answers, heavy cueing), on the rationale that memory-impaired learners can't rely on error-correction and retain relatively preserved implicit/procedural memory.",
       evidence: { strength: "moderate", confidence: "medium",
         note: "Consistent small-study evidence that errorless learning beats errorful learning or no treatment for teaching specific daily tasks, with gains generally maintained; cited as supported in AOTA's 2024 dementia guidelines. The added benefit of the 'errorless' component specifically is debated.",
-        sources: [{ label: "Werner review (Clin Interv Aging) / AOTA 2024 dementia guideline", url: "https://research.aota.org/ajot", type: "guideline" }] },
+        sources: [{ label: "Werner review (Clin Interv Aging) / AOTA 2024 dementia guideline", url: "https://journals.sagepub.com/home/aota", type: "guideline" }] },
       caution: "Best for concrete, specific procedural targets (a name, route, routine) — it teaches that task, not generalisable problem-solving or cognition broadly." },
 
     { id: "spaced-retrieval-training", sec: "neuro", name: "Spaced Retrieval Training", aka: "SR / expanding rehearsal",
@@ -239,7 +239,7 @@ OT.interventions = {
       what: "Eccentric-viewing training (using a healthier non-central retinal locus when central vision is lost) and magnification-device training (optical/electronic CCTV), usually combined with environmental modification and adaptive strategies.",
       evidence: { strength: "strong", confidence: "medium",
         note: "AOTA-methodology systematic reviews found strong evidence for multicomponent OT low-vision programmes (improving ADL/IADL and participation) and moderate evidence for stand-based electronic magnification and eccentric-viewing training for reading outcomes.",
-        sources: [{ label: "AOTA/AJOT low-vision evidence reviews", url: "https://research.aota.org/ajot", type: "systematic-review" }] },
+        sources: [{ label: "AOTA/AJOT low-vision evidence reviews", url: "https://journals.sagepub.com/home/aota", type: "systematic-review" }] },
       caution: "Eccentric viewing needs a usable preferred retinal locus and adaptation time — not all patients adopt it; evidence is strongest in AMD, less so for other etiologies." },
 
     { id: "dysphagia-mealtime-ot", sec: "neuro", name: "Dysphagia & Mealtime Management (OT role)", aka: "Feeding/eating/swallowing",
@@ -247,7 +247,7 @@ OT.interventions = {
       what: "Within scope and with advanced competency, OTs address self-feeding, postural control, cognitive/perceptual/sensory and motor components of safe swallowing and mealtime independence — complementary to the SLP-led swallowing-mechanism role.",
       evidence: { strength: "emerging", confidence: "low",
         note: "Early swallowing therapy improves post-stroke dysphagia recovery in the broader (largely SLP-led) literature, but evidence isolating OT's specific contribution is thin — OT's role is better documented in scope/consensus literature than outcome trials.",
-        sources: [{ label: "AOTA scope/role-delineation literature", url: "https://research.aota.org/ajot", type: "org" }] },
+        sources: [{ label: "AOTA scope/role-delineation literature", url: "https://journals.sagepub.com/home/aota", type: "org" }] },
       caution: "OT scope in dysphagia varies by jurisdiction/facility — verify local rules; be honest that the rigorous swallowing-therapy trial base is SLP-led." },
 
     /* ================= HAND & UPPER EXTREMITY ================= */
@@ -462,7 +462,7 @@ OT.interventions = {
       protocol: "The Schaaf 2014 RCT delivered ~30 one-hour sessions over 10 weeks under fidelity; no universal dose otherwise.",
       evidence: { strength: "contested", confidence: "low",
         note: "Under strict fidelity, RCTs (incl. Acuña 2025 RCT-only review and Piller 2026, AJOT) show autistic children improve on individualised (GAS) occupational-performance goals, but standardised-outcome effects, independent replication, and the sensory-processing construct remain contested (the SenITA RCT had a null primary behaviour outcome). Consistent with the atlas's 'contested' stance for autism/sensory processing.",
-        sources: [{ label: "Acuña 2025 (AJOT, RCTs) / Piller 2026 (AJOT)", url: "https://research.aota.org/ajot", type: "org" }, { label: "SenITA RCT (Randell 2022, NIHR HTA)", url: "https://www.journalslibrary.nihr.ac.uk/hta/TQGE0020", type: "RCT" }] },
+        sources: [{ label: "Acuña 2025 (AJOT, RCTs) / Piller 2026 (AJOT)", url: "https://journals.sagepub.com/home/aota", type: "org" }, { label: "SenITA RCT (Randell 2022, NIHR HTA)", url: "https://www.journalslibrary.nihr.ac.uk/hta/TQGE0020", type: "RCT" }] },
       practitioners: "AOTA positions fidelity ASI as evidence-based for autistic children; an internal fault line exists (clinicians keep offering SI-based work despite a 'contentious evidence base', per a 2024 qualitative study), and critics argue fidelity gatekeeping immunises ASI from disconfirmation.",
       patients: "Cohn 2001 (grounded theory) found parents report gains in abilities, activities and reconstruction of self-worth/advocacy capacity; families often see goal-specific gains standardised measures miss. Neurodiversity critics (NeuroClastic) object that removing a child's choice is a hallmark of normalisation — though fidelity ASI is child-led, so the critique lands hardest on non-fidelity 'sensory-based' protocols.",
       training: "CLASI's CASI certificate = 6 hybrid modules (180 hr total; tuition not publicly posted); EASI test materials ~$200–$300 (as of 2026-07). The legacy SIPT pathway is being superseded by EASI-based training.",
@@ -577,7 +577,7 @@ OT.interventions = {
       protocol: "Program-specified lesson sequence; research doses vary (e.g., school-year consultative whole-class implementation).",
       evidence: { strength: "emerging", confidence: "medium",
         note: "HWT beats no-instruction and supports readiness (Donica 2015 cohorts outperformed controls, d ≈ 0.8–1.0, non-randomised), but head-to-head evidence that it outperforms other structured handwriting instruction is thin. Consistent with the atlas's 'emerging' handwriting rating.",
-        sources: [{ label: "Engel 2018 (AJOT) / Donica 2015 (AJOT)", url: "https://research.aota.org/ajot", type: "org" }] },
+        sources: [{ label: "Engel 2018 (AJOT) / Donica 2015 (AJOT)", url: "https://journals.sagepub.com/home/aota", type: "org" }] },
       practitioners: "Teachers report lack of training as the main implementation barrier; no strong OT-specific grievance surfaced.",
       training: "No certification required; Learning Without Tears workshops sold individually (e.g., a Handwriting Assessment virtual workshop $220/5.5 hr, lwtears.com); curriculum kits priced per classroom.",
       caution: "Structured practice is the likely active ingredient — evidence supports teaching handwriting explicitly, not this brand specifically." },
@@ -676,7 +676,7 @@ OT.interventions = {
       protocol: "Cog-Fun trials used ~10–12 weekly 1-hr sessions with parent participation; an ECogFun-VR RCT (2026) tested a VR-extended version.",
       evidence: { strength: "emerging", confidence: "medium",
         note: "Emerging-to-moderate: a randomised crossover trial (Hahn-Markowitz 2016/17, n=107, ages 7–10) improved EF, occupational performance and goal behaviours, supported by the broader organisation-skills-training literature; adolescent-specific OT evidence is thinner and rides on extensions.",
-        sources: [{ label: "Hahn-Markowitz 2016/17 (AJOT) / Bikic 2017", url: "https://research.aota.org/ajot", type: "org" }] },
+        sources: [{ label: "Hahn-Markowitz 2016/17 (AJOT) / Bikic 2017", url: "https://journals.sagepub.com/home/aota", type: "org" }] },
       caution: "Coaching daily-life strategies is evidenced; computerised working-memory training marketed for the same children largely is not — don't let the two blur." },
 
     { id: "play-based-interventions", sec: "peds", name: "Play-Based Interventions", aka: "Learn to Play / LEGO-based therapy",
@@ -771,7 +771,7 @@ OT.interventions = {
       what: "A manualised, time-use-focused intervention combining cognitive-behavioural, health-promotion and occupational-engagement strategies in a structured workbook, targeting volitional/activity-pattern difficulties in chronic mental illness.",
       evidence: { strength: "emerging", confidence: "low",
         note: "A randomised pilot (Edgelow & Krupa 2011, AJOT) found the treatment group increased occupational balance and spent ~47 more minutes/day in activity than controls; no large confirmatory RCT yet.",
-        sources: [{ label: "Edgelow & Krupa 2011 pilot RCT (AJOT)", url: "https://research.aota.org/ajot", type: "RCT" }] },
+        sources: [{ label: "Edgelow & Krupa 2011 pilot RCT (AJOT)", url: "https://journals.sagepub.com/home/aota", type: "RCT" }] },
       caution: "Present as pilot-stage evidence — a single modest-sample RCT plus implementation/qualitative follow-up, not an established large-trial intervention." },
 
     { id: "recovery-through-activity", sec: "mhgeri", name: "Recovery Through Activity", aka: "",
@@ -818,7 +818,7 @@ OT.interventions = {
       protocol: "Standard CBT-I is multi-component over several structured sessions (specific OT-delivered dose not confirmed).",
       evidence: { strength: "emerging", confidence: "low",
         note: "CBT-I is gold-standard evidenced (first-line for chronic insomnia, efficacy comparable to pharmacotherapy short-term and superior long-term), but its adoption as a distinct OT service line is an emerging trend more than an independently trial-tested OT protocol.",
-        sources: [{ label: "AJOT 2024 (Restful Rehabilitation) / CBT-I meta-analyses", url: "https://research.aota.org/ajot", type: "org" }] },
+        sources: [{ label: "AJOT 2024 (Restful Rehabilitation) / CBT-I meta-analyses", url: "https://journals.sagepub.com/home/aota", type: "org" }] },
       caution: "Distinguish 'CBT-I works' (strong) from 'OT-delivered sleep intervention works equally well' (emerging, not yet independently confirmed at scale)." },
 
     { id: "time-use-occupational-balance", sec: "mhgeri", name: "Time-Use / Occupational Balance Interventions", aka: "",

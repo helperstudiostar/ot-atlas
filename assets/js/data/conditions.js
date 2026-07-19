@@ -597,7 +597,7 @@ OT.conditions = [
     assess: ["FIM / functional status measures", "MoCA / cognitive screens", "COPM", "FACIT-Fatigue"],
     goals: ["Rebuild independence in basic self-care from dependent status", "Use compensatory strategies to complete a multi-step IADL", "Return to prior roles with fatigue and cognitive strategies"],
     settings: "ICU · Acute care · Inpatient rehab · Outpatient · Home health",
-    links: [{ l: "SCCM – Post-Intensive Care Syndrome", u: "https://www.sccm.org/MyICUCare/THRIVE/Post-intensive-Care-Syndrome" }]
+    links: [{ l: "SCCM – Post-Intensive Care Syndrome", u: "https://www.sccm.org/clinical-resources/iculiberation-home/about" }]
   },
 
   /* ---------------- ADDED: HAND / UPPER EXTREMITY ---------------- */

@@ -7,6 +7,28 @@ session end — sessions may be cut by usage limits. Partial entries are expecte
 
 ---
 
+## 2026-07-19 (cont) — [F56] Post-launch round: open-review model · social card · link audit (Fable 5, owner: "no time/money for OT sign off… make it better") — COMPLETE
+- **Review model (owner decision: no paid clinician sign-off):** "pending clinician review"
+  reframed as OPEN PRACTITIONER REVIEW — transparent sourcing + REVIEWING.md (30-min
+  per-chapter checklist, reviewer credits, evidence-beats-opinion ground rules) + GitHub
+  Issues pipeline + on-page CTA ("Are you an OT? … review a chapter"). interventions.js
+  caveat + lede updated; HANDOFF review-model note updated.
+- **Social preview:** og-image (1200×630) + apple-touch-icon (180×180) PNGs generated
+  IN-BROWSER (canvas + the app's own Fraunces/Hanken/Spline fonts; posted to a throwaway
+  localhost receiver — no image tooling needed); og:image/twitter:card(summary_large_image)
+  meta wired; icon added to SW CORE. F28/F42b's image-tooling gate: CLOSED.
+- **Link audit (sonnet agent, 93/350 URLs checked — all 61 conditions links + samples):**
+  63 OK · 3 working redirects · 23 bot-blocked · **4 dead, all fixed**: SCCM PICS page
+  (→ ICU Liberation), FOTA cert-mismatch (→ www.flota.org), Coral Care cert (→ www),
+  AOTA 2025 ethics draft PDF taken down post-adoption (→ live ethics page). Plus the
+  18-citation research.aota.org/ajot generic URL → journals.sagepub.com/home/aota (AJOT
+  moved to SAGE; 9 source objects updated; SAGE domain already in _confirmed).
+  orthoinfo.aaos.org redirect left as-is deliberately (works + keeps verified status).
+  Full report in session scratchpad link-audit-2026-07-19.md.
+- sw v28→v29→**v30**; commits a798124 → 7b8f623 → (this one); Pages auto-redeploys.
+- **Ideation roadmap delivered to owner** (flashcards > norms tables > client handouts >
+  student hub > billing basics > case library > SEO prerender > analytics > Spanish).
+
 ## 2026-07-19 — [F55] LAUNCH — GitHub repo + Pages deploy (Fable 5, owner: "create the repo, etc finish it so can launch it") — COMPLETE
 - Repo: **https://github.com/helperstudiostar/ot-atlas** (public, gh CLI, owner's
   authenticated account). Commits: 42da6d9 baseline → 1bcd2a0 F54 → a798124 launch.

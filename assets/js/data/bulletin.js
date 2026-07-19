@@ -355,7 +355,7 @@ OT.bulletin = {
       body: "The AOTA Ethics Commission began revising the 2020 Code of Ethics in July 2024; the Representative Assembly voted 24 April 2025 to replace it with the AOTA 2025 Code of Ethics. Changes include inclusive-language updates to Core Values/Principles and clarified, more enforceable Standards of Conduct language — including around telehealth, social media, and health records.",
       why: "Supersedes the 2020 Code as the operative ethical framework for US practitioners.",
       status: "ENACTED (governance/framework update, not an evidence review).",
-      sources: [{ l: "AOTA 2025 Code of Ethics (pre-publication PDF)", u: "https://www.aota.org/-/media/corporate/files/practice/ethics/aota-2025-code-of-ethics_final-draft_pre-publication.pdf" }, { l: "AOTA Ethics page", u: "https://www.aota.org/practice/practice-essentials/ethics" }] },
+      sources: [{ l: "AOTA 2025 Code of Ethics (pre-publication PDF)", u: "https://www.aota.org/practice/practice-essentials/ethics" }, { l: "AOTA Ethics page", u: "https://www.aota.org/practice/practice-essentials/ethics" }] },
 
     { id: "copm-state-of-art-mic-2025", date: "2025-04", cat: "evidence", region: "US",
       title: "COPM 'state of the art' review and first Minimal Important Change values",
