@@ -1242,6 +1242,24 @@
     draw();
   }
 
+  /* ---------- F58 THE STUDENT'S SHELF (chapter 17 — classroom to clinic) ---------- */
+  function renderStudents() {
+    const S = window.OT.studenthub;
+    if (!S) { main.innerHTML = `<div class="page"><p class="muted">The student's shelf data didn't load.</p></div>`; return; }
+    main.innerHTML = `<div class="page">
+      <p class="eyebrow">From classroom to clinic</p>
+      <h1 class="page-title">The student&rsquo;s <em>shelf</em></h1>
+      <p class="lede">The practical facts nobody puts in the syllabus — the NBCOT exam, fieldwork, the OT/OTA split, and what the work actually pays. <span class="muted">${S.meta.caveat}</span></p>
+      ${S.sections.map((sec, i) => `<section class="sh-sec">
+        <header class="idx-head" style="border-top:2px solid var(--ink);padding-top:12px;margin-top:${i ? "34px" : "26px"}"><h2>${sec.title}</h2></header>
+        ${sec.lede ? `<p class="muted" style="margin-top:2px">${sec.lede}</p>` : ""}
+        <div class="dp-prose">${sec.facts.map(f => `<p class="dp-run"><strong>${escapeHTML(f.h)}.</strong> ${f.body}</p>`).join("")}</div>
+        ${sec.sources && sec.sources.length ? sourceChips({ sources: sec.sources }) : ""}
+      </section>`).join("")}
+      ${pageFoot("students")}
+    </div>`;
+  }
+
   /* ---------- F57 STUDY CARDS (chapter 16 — learn it cold) ---------- */
   // Flashcards auto-generated from the atlas's own data — no separate content to maintain.
   let studyDeckKey = "all", studyCards = [], studyIdx = 0, studyKnown = 0, studyAgainCount = 0, studyRevealed = false;
@@ -1917,7 +1935,7 @@
     if (window.OT.directory) window.OT.directory.entries.forEach(e => idx.push({ cat: "Directory", title: e.name, desc: e.focus || "", route: "directory", action: () => { dirQuery = e.name; dirFilter = "all"; go("directory"); } }));
     if (window.OT.bulletin) window.OT.bulletin.entries.forEach(e => idx.push({ cat: "What's changed", title: e.title, desc: e.summary || "", route: "bulletin", action: () => { bulQuery = e.title; bulCat = "all"; bulRegion = "all"; go("bulletin"); } }));
     if (window.OT.interventions) window.OT.interventions.entries.forEach(e => idx.push({ cat: "Treatment", title: e.name + (e.aka ? " (" + e.aka + ")" : ""), desc: e.what ? e.what.slice(0, 110) : "", route: "interventions", action: () => { txQuery = e.name; txFilter = "all"; txStrength = "all"; go("interventions"); } }));
-    [["What is OT", "foundations"], ["History of OT", "foundations"], ["The OT profession & settings", "foundations"], ["EBP & PICO", "evidence"], ["SOAP notes & goals", "reasoning"], ["For clients & families", "clients"], ["Interactive toolkit", "toolkit"], ["Study cards (flashcards)", "study"]].forEach(p => idx.push({ cat: "Page", title: p[0], desc: "", route: p[1], action: () => go(p[1]) }));
+    [["What is OT", "foundations"], ["History of OT", "foundations"], ["The OT profession & settings", "foundations"], ["EBP & PICO", "evidence"], ["SOAP notes & goals", "reasoning"], ["For clients & families", "clients"], ["Interactive toolkit", "toolkit"], ["Study cards (flashcards)", "study"], ["The student's shelf (NBCOT, fieldwork, careers)", "students"]].forEach(p => idx.push({ cat: "Page", title: p[0], desc: "", route: p[1], action: () => go(p[1]) }));
     searchIndex = idx;
     return idx;
   }
@@ -2019,7 +2037,7 @@
   const routes = {
     home: renderHome, foundations: renderFoundations, pillars: renderPillars,
     models: renderModels, reasoning: renderReasoning, evidence: renderEvidence,
-    conditions: renderConditions, assessments: renderAssessments, directory: renderDirectory, bulletin: renderBulletin, interventions: renderInterventions, study: renderStudy, videos: renderVideos,
+    conditions: renderConditions, assessments: renderAssessments, directory: renderDirectory, bulletin: renderBulletin, interventions: renderInterventions, study: renderStudy, students: renderStudents, videos: renderVideos,
     resources: renderResources, clients: renderClients, toolkit: renderToolkit
   };
   // F37: pageFoot doubles as a map-legend colophon — reviewed date, typeface credits, an AA
@@ -2046,7 +2064,7 @@
   function wireGo(root = main) { $$("[data-go]", root).forEach(b => b.addEventListener("click", () => go(b.dataset.go))); }
   window.__otGo = go;
 
-  const ROUTE_TITLES = { home: "Occupational therapy, in depth", foundations: "Foundations & the OT profession", pillars: "Domain & the OT process", models: "Models & frames of reference", reasoning: "Clinical reasoning", evidence: "Evidence-based practice", conditions: "Conditions library", assessments: "Assessments & measures", videos: "Video library", resources: "Resources & glossary", clients: "For clients & families", toolkit: "Interactive toolkit", interventions: "Treatments & protocols", study: "Study cards" };
+  const ROUTE_TITLES = { home: "Occupational therapy, in depth", foundations: "Foundations & the OT profession", pillars: "Domain & the OT process", models: "Models & frames of reference", reasoning: "Clinical reasoning", evidence: "Evidence-based practice", conditions: "Conditions library", assessments: "Assessments & measures", videos: "Video library", resources: "Resources & glossary", clients: "For clients & families", toolkit: "Interactive toolkit", interventions: "Treatments & protocols", study: "Study cards", students: "The student's shelf" };
   function setMeta(title, desc) {
     document.title = title ? `${title} — The OT Atlas` : "The OT Atlas — Occupational Therapy, in depth";
     if (desc != null) {
@@ -2142,7 +2160,8 @@
     directory: "13 · REFERENCE",  // the appendix — external resources, added 2026-07 (F50)
     bulletin: "14 · REFERENCE",   // notes to this edition — what's changed, added 2026-07 (F51)
     interventions: "15 · REFERENCE", // treatments & protocols compendium, added 2026-07 (F53)
-    study: "16 · GET HELP & DO"      // study cards — flashcards from the atlas's own data (F57)
+    study: "16 · GET HELP & DO",     // study cards — flashcards from the atlas's own data (F57)
+    students: "17 · GET HELP & DO"   // the student's shelf — NBCOT/fieldwork/careers (F58)
   };
   // F37: chapter display names for the pageFoot() "Continue the atlas →" link — mirrors the
   // nav-list wording (index.html), NOT ROUTE_TITLES (that map drives <title>/meta and is missing
@@ -2153,7 +2172,7 @@
     conditions: "Conditions library", assessments: "Assessments & measures", videos: "Video library",
     resources: "Resources & glossary", clients: "For clients & families", toolkit: "Interactive toolkit",
     directory: "The OT directory", bulletin: "What's changed",
-    interventions: "Treatments & protocols", study: "Study cards"
+    interventions: "Treatments & protocols", study: "Study cards", students: "The student's shelf"
   };
   // F35: nav-group → chapter accent slug (drives #main[data-chapter] → --chapter-accent).
   // ORIENTATION teal / THE FRAMEWORK plum / REFERENCE ochre / GET HELP & DO clay.

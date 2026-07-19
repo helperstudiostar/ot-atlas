@@ -7,6 +7,38 @@ session end — sessions may be cut by usage limits. Partial entries are expecte
 
 ---
 
+## 2026-07-19 (cont) — [F57+F58] BUILD-OUT: study cards · abbreviation decoder · SEO · handouts · the student's shelf (Fable 5 + 3 agents, owner: "build all you can") — COMPLETE
+**[F57] STUDY CARDS (chapter 16, `#/study`, GET HELP & DO, i-grad):** flashcards generated
+from the atlas's own data — zero separate content to maintain. 351-card "Everything" deck +
+per-chapter decks (conditions 132 · assessments 58 · treatments 95 · glossary 66); missed
+cards recycle to the end of the deck; Space/1/2 keyboard flow (guarded against inputs/
+overlays); card = 2px-rule stage (true containment earns it). Verified live: reveal/knew/
+again all work, "again" grows deck by 1 (351→352 ✓), deck switching, keyboard reveal.
+**Abbreviation decoder (Resources page):** new data file abbreviations.js — 130 verified
+expansions (sonnet agent; WebSearch-verified the tricky ones — LUPA/PDGM/WBAT/G-codes-retired;
+refused to guess one ambiguous entry; Fable added HWT = Handwriting Without Tears). Searchable
+deflist + all 130 in global `/` search. Verified: WBAT/HWT lookups live.
+**SEO basics:** robots.txt + sitemap.xml + JSON-LD WebSite schema (full prerender for hash
+routes deliberately deferred — architecture change).
+**Print handouts:** print button on condition drawers → body.print-focus isolates the drawer
+in @media print (chrome/share/close hidden). Button verified present; print output needs a
+real browser check (pane cannot print).
+**[F58] THE STUDENT'S SHELF (chapter 17, `#/students`, GET HELP & DO, i-book):** sonnet
+research (NBCOT/fieldwork/OT-vs-OTA/careers, honesty-flagged: BLS 403'd → figures are
+search-excerpt-sourced and SAY SO inline; NBCOT pass rates/retake windows flagged secondary)
+→ studenthub.js (33 facts, 4 sections, 16 source chips, every fee/wage dated) → dp-prose
+run-in render. Verified live: 4 sections render, coord "17 · GET HELP & DO", colophon chain
+now 17→home wrap, flags visible in rendered text.
+**Ops notes:** SW bump-after-edit trap hit AGAIN mid-round (v31 cached pre-decoder edits →
+v32; then v33 after studenthub) — the HANDOFF rule ("bump again if you edit after a bump")
+remains the #1 session footgun. launch.json had mode 700 → preview EPERM → chmod 644 + manual
+server on :4180 (orphan agent server owns :4178). 16→17-route sweep clean, console clean,
+caches → ["ot-atlas-v33"]. Commits: 597f872 (F57 batch) + this one (F58).
+**The atlas is now 17 chapters.** Remaining backlog (owner-gated or heavy): assessment
+norms/cutoffs (clinical research), billing chapter (CPT copyright care), case library
+(clinical composition — behind open-review), full SEO prerender, F39 second half, F41
+compass, Spanish.
+
 ## 2026-07-19 (cont) — [F56] Post-launch round: open-review model · social card · link audit (Fable 5, owner: "no time/money for OT sign off… make it better") — COMPLETE
 - **Review model (owner decision: no paid clinician sign-off):** "pending clinician review"
   reframed as OPEN PRACTITIONER REVIEW — transparent sourcing + REVIEWING.md (30-min

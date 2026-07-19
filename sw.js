@@ -6,7 +6,7 @@
  * │  cached copy until the version string changes and this SW re-installs.      │
  * └───────────────────────────────────────────────────────────────────────────┘
  */
-const CACHE = "ot-atlas-v32";
+const CACHE = "ot-atlas-v33";
 
 const CORE = [
   "./",
@@ -28,6 +28,7 @@ const CORE = [
   "./assets/js/data/bulletin.js",
   "./assets/js/data/interventions.js",
   "./assets/js/data/abbreviations.js",
+  "./assets/js/data/studenthub.js",
   "./assets/js/data/rigor.js"
 ];
 
