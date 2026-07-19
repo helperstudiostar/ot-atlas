@@ -7,6 +7,23 @@ session end — sessions may be cut by usage limits. Partial entries are expecte
 
 ---
 
+## 2026-07-19 — [F55] LAUNCH — GitHub repo + Pages deploy (Fable 5, owner: "create the repo, etc finish it so can launch it") — COMPLETE
+- Repo: **https://github.com/helperstudiostar/ot-atlas** (public, gh CLI, owner's
+  authenticated account). Commits: 42da6d9 baseline → 1bcd2a0 F54 → a798124 launch.
+- **Live: https://helperstudiostar.github.io/ot-atlas/** — GitHub Pages, legacy build from
+  main root, auto-deploys on push. Build confirmed "built".
+- Pre-launch swap: colophon correction link mailto→**GitHub Issues** (owner email off the
+  public site). sw v27→**v28**. README/HANDOFF carry the live URLs + publish flow.
+- **Live verification (actual output):** app boots on the real URL from the /ot-atlas/
+  subpath (relative paths held); home 184 / conditions 628 / interventions 2973 /
+  directory 2814 / bulletin 1719 nodes — identical to local; SW registered, caches
+  ["ot-atlas-v28"] on the live origin; correction link →
+  github.com/helperstudiostar/ot-atlas/issues/new; console clean. Screenshot: first-visit
+  chooser over the dark home on the production URL.
+- Still open before wide promotion (logged in HANDOFF "Deployed"): og:image/apple-touch
+  PNGs; SEO prerender (hash routes crawler-invisible); custom domain optional; clinician
+  review remains THE gate for promoting the clinical chapters.
+
 ## 2026-07-19 — [F54] Finish-what-you-can round: git baseline · knowledge-graph links · correction link · source verification (Fable 5, owner: "finish what you can asap") — COMPLETE
 - [x] **git init + baseline commit** (42da6d9, 33 objects/496KB) — the repo finally has
       history. Deploy still needs owner accounts (instructions to be added to HANDOFF).
