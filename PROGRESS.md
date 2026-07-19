@@ -7,6 +7,32 @@ session end — sessions may be cut by usage limits. Partial entries are expecte
 
 ---
 
+## 2026-07-19 — [F54] Finish-what-you-can round: git baseline · knowledge-graph links · correction link · source verification (Fable 5, owner: "finish what you can asap") — COMPLETE
+- [x] **git init + baseline commit** (42da6d9, 33 objects/496KB) — the repo finally has
+      history. Deploy still needs owner accounts (instructions to be added to HANDOFF).
+- [x] **F54 knowledge graph, conditions→treatments:** `relatedTreatments(c)` scores each
+      condition's ot[] line against intervention name+aka (word-fraction, 0.6 threshold —
+      PRECISION-FIRST: a missing link beats a wrong clinical link); drawer gains a "Related
+      treatments" chip row (clinical mode, like assessments); chips jump to #/interventions
+      pre-filtered. Verified: stroke→[Task-Specific Training, CIMT (adult)], chip→"1
+      treatment" exact landing; dementia→[TAP]; carpal-tunnel→0 (below threshold, accepted).
+- [x] **Correction link** in the colophon (`.foot-correct` mailto, owner address — swap
+      before public deploy if desired).
+- [x] source-domain verification (sonnet agent): rigor.js `_confirmed` 26→**64 domains** —
+      38 added under a dated comment, each with WebFetch proof or explicit "canonical,
+      bot-blocked" note; commercial CEU vendors / aggregators / social platforms deliberately
+      excluded; redundant subdomains avoided via substring coverage. Result live-measured:
+      **101 of 103 intervention sources now render verified** (was ~0); Ayres SI's AJOT +
+      NIHR chips both ✓. node --check OK; nothing but the allowlist touched.
+- [x] a11y spot-check, chapters 13–15: 0 unlabeled inputs · 0 heading skips · 0 alt-less
+      images · native <summary> semantics (148/76/95 disclosures).
+- [x] sw v26→**v27**; 7-route sweep clean (+1 node/route = colophon correction link);
+      console clean; caches → ["ot-atlas-v27"]. Second commit follows.
+**STATUS: COMPLETE (2026-07-19).** Remaining from the "what's better" list (owner-gated or
+future sessions): deploy (owner accounts — instructions in HANDOFF), clinician review
+(owner recruits; workflow support on request), og:image/PNG icons (image tooling), perf
+lazy-load, F39 second half + F41 compass (foreground-tab/Fable design sessions), Spanish.
+
 ## 2026-07-18 — [F53] THE TREATMENTS — treatments & protocols compendium (Fable 5 + 7 agents, owner request) — COMPLETE
 Owner: "robust list/info for all the OT treatments, protocols, etc — key info, rankings,
 ratings, reviews and feedback from research, experiences, patients and practitioners."

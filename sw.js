@@ -6,7 +6,7 @@
  * │  cached copy until the version string changes and this SW re-installs.      │
  * └───────────────────────────────────────────────────────────────────────────┘
  */
-const CACHE = "ot-atlas-v26";
+const CACHE = "ot-atlas-v27";
 
 const CORE = [
   "./",

@@ -874,6 +874,27 @@
     }));
     draw();
   }
+  // F54: match a condition's intervention lines to entries in the treatments compendium (ch. 15).
+  // Score = fraction of the treatment's name/aka words present in the condition's ot[] line;
+  // 0.6 threshold keeps generic words ("therapy", "training") from making false links.
+  function relatedTreatments(c) {
+    if (!window.OT.interventions || !c.ot) return [];
+    const norm = s => s.toLowerCase().replace(/[^a-z0-9 ]/g, " ").split(/\s+/).filter(w => w.length > 2);
+    const found = new Map();
+    c.ot.forEach(line => {
+      const lw = norm(line);
+      if (!lw.length) return;
+      let best = null, bestScore = 0;
+      window.OT.interventions.entries.forEach(e => {
+        const hay = norm(e.name + " " + (e.aka || ""));
+        if (!hay.length) return;
+        const score = hay.filter(w => lw.includes(w)).length / hay.length;
+        if (score > bestScore) { bestScore = score; best = e; }
+      });
+      if (bestScore >= 0.6 && best && !found.has(best.id)) found.set(best.id, best);
+    });
+    return [...found.values()].slice(0, 6);
+  }
   // Map a drawer chip label ("Fugl-Meyer (UE)", "FIM / CARE") to the best assessments-library query.
   function bestAsmtQuery(label) {
     const norm = s => s.toLowerCase().replace(/[^a-z0-9 ]/g, " ").split(/\s+/).filter(w => w.length > 1);
@@ -1004,12 +1025,16 @@
     // F29: sibling conditions in the same category, to keep exploration going
     const siblings = window.OT.conditions.filter(x => x.cat === c.cat && x.id !== c.id).slice(0, 5);
     const relConds = siblings.length ? `<h3>Related conditions</h3><div class="chip-row">${siblings.map(s => `<button class="chip" data-cond="${s.id}">${escapeHTML(s.name)} →</button>`).join("")}</div>` : "";
+    // F54: cross-link into the treatments compendium (clinical mode, like assessments)
+    const relTx = pub ? [] : relatedTreatments(c);
+    const relTxHTML = relTx.length ? `<h3>Related treatments</h3><p class="muted small" style="margin:0 0 8px">Evidence-rated entries in the treatments compendium.</p><div class="chip-row">${relTx.map(t => `<button class="chip" data-tx="${escapeHTML(t.name)}">${escapeHTML(t.name)} ↗</button>`).join("")}</div>` : "";
     const body = `
       <p>${c.desc}</p>
       <h3>${pl("Impact on occupation &amp; daily life", "How it affects everyday life")}</h3><p>${c.impact}</p>
       <h3>${pl("OT's role &amp; common interventions", "How OT can help")}</h3>${listHTML(c.ot)}
       ${c.evidence ? `<h3>How strong is the evidence?</h3><div class="ev-dialwrap">${evidenceDial(c.evidence)}${evidenceBlock(c.evidence)}</div>` : ""}
       ${!pub ? `<h3>Relevant assessments</h3><p class="muted small" style="margin:0 0 8px">Tap a highlighted tool to open it in the assessments library.</p><div class="chip-row">${c.assess.map(a => { const q = bestAsmtQuery(a); return q ? `<button class="chip" data-asmt="${escapeHTML(q)}">${escapeHTML(a)} ↗</button>` : `<span class="chip chip-static" title="Not yet in the assessments library">${escapeHTML(a)}</span>`; }).join("")}</div>` : ""}
+      ${relTxHTML}
       <h3>${pl("Example goals", "What progress can look like")}</h3>${listHTML(c.goals)}
       <h3>${pl("Typical settings", "Where this kind of OT happens")}</h3><p>${c.settings}</p>
       ${pub ? `<h3>Accessing OT — by country</h3><p class="muted small">Routes and funding differ by country — find yours.</p>${countryFactsHTML(true)}` : ""}
@@ -1040,6 +1065,10 @@
       closeDrawer(); go("assessments");
     }));
     $$("#drawerEl [data-cond]").forEach(b => b.addEventListener("click", () => openCondition(b.dataset.cond)));
+    $$("#drawerEl [data-tx]").forEach(b => b.addEventListener("click", () => {
+      txQuery = b.dataset.tx; txFilter = "all"; txStrength = "all";
+      closeDrawer(); go("interventions");
+    }));
     $$("#drawerEl [data-vidbucket]").forEach(b => b.addEventListener("click", () => {
       const bi = +b.dataset.vidbucket; closeDrawer(); go("videos");
       setTimeout(() => { const t = document.getElementById("vid-b" + bi); if (!t) return;
@@ -1880,7 +1909,7 @@
     }
     return `<div class="page-foot">
       <p class="foot-legal">The OT Atlas — an educational resource. Not a substitute for individualised care from a licensed occupational therapist. Sources include AOTA/OTPF-4, WFOT, OTseeker, Cochrane and the curated links throughout.${rev ? ` <span class="muted">Content reviewed ${rev}.</span>` : ""}</p>
-      <p class="foot-colophon">Set in <span class="foot-face">Fraunces</span> · <span class="foot-face">Hanken Grotesk</span> · <span class="foot-face">Spline Sans Mono</span>. Colour contrast meets <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> AA in both themes.</p>
+      <p class="foot-colophon">Set in <span class="foot-face">Fraunces</span> · <span class="foot-face">Hanken Grotesk</span> · <span class="foot-face">Spline Sans Mono</span>. Colour contrast meets <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> AA in both themes. <a class="foot-correct" href="mailto:bbbrainy123@gmail.com?subject=OT%20Atlas%20correction">Spotted an error? Tell us ↗</a></p>
       ${nextHTML}
     </div>`;
   }

@@ -261,7 +261,20 @@ OT.rigor = {
     "samhsa.gov", "osha.gov", "ptsd.va.gov", "ncbi.nlm.nih.gov", "msktc.org",
     // confirmed national organisations
     "orthoinfo.aaos.org", "aaos.org", "asht.org", "arthritis.org",
-    "stroke.org", "heart.org", "parkinson.org", "nationalmssociety.org", "biausa.org"
+    "stroke.org", "heart.org", "parkinson.org", "nationalmssociety.org", "biausa.org",
+    // confirmed 2026-07-19 (chapters 13-15 sources; WebFetch-verified)
+    // professional bodies / certifying & accrediting orgs
+    "wfot.org", "nbcot.org", "acoteonline.org", "rcot.co.uk", "otaus.com.au", "osot.on.ca",
+    "apta.org", "htcc.org", "ndta.org", "cihi.ca", "csg.org", "icdl.com",
+    "ama-assn.org", "aafp.org", "aasm.org",
+    // government / regulatory authorities
+    "cms.gov", "otcompact.gov", "ndis.gov.au", "ndisreview.gov.au",
+    "occupationaltherapyboard.gov.au", "ahpra.gov.au", "federalregister.gov", "bls.gov",
+    "england.nhs.uk", "gazette.govt.nz", "prc.gov.ph", "ncahp.abdm.gov.in", "sos.ga.gov",
+    // journals / academic publishers / research bodies
+    "journals.sagepub.com", "cochrane.org", "onlinelibrary.wiley.com", "thelancet.com",
+    "sciencedirect.com", "tandfonline.com", "frontiersin.org", "nihr.ac.uk", "who.int",
+    "chan.usc.edu"
   ];
   function isConfirmed(url) {
     url = url || "";
