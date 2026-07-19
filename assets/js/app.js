@@ -1909,7 +1909,7 @@
     }
     return `<div class="page-foot">
       <p class="foot-legal">The OT Atlas — an educational resource. Not a substitute for individualised care from a licensed occupational therapist. Sources include AOTA/OTPF-4, WFOT, OTseeker, Cochrane and the curated links throughout.${rev ? ` <span class="muted">Content reviewed ${rev}.</span>` : ""}</p>
-      <p class="foot-colophon">Set in <span class="foot-face">Fraunces</span> · <span class="foot-face">Hanken Grotesk</span> · <span class="foot-face">Spline Sans Mono</span>. Colour contrast meets <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> AA in both themes. <a class="foot-correct" href="mailto:bbbrainy123@gmail.com?subject=OT%20Atlas%20correction">Spotted an error? Tell us ↗</a></p>
+      <p class="foot-colophon">Set in <span class="foot-face">Fraunces</span> · <span class="foot-face">Hanken Grotesk</span> · <span class="foot-face">Spline Sans Mono</span>. Colour contrast meets <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> AA in both themes. <a class="foot-correct" href="https://github.com/helperstudiostar/ot-atlas/issues/new?title=Correction%3A%20" target="_blank" rel="noopener">Spotted an error? Tell us ↗</a></p>
       ${nextHTML}
     </div>`;
   }

@@ -8,7 +8,9 @@ A self-contained, no-build web app. It gathers OT's frameworks, domains, conditi
 
 ## How to open it
 
-It's a static site — **no install, no build, no server required**.
+**Live:** https://helperstudiostar.github.io/ot-atlas/
+
+Or locally — it's a static site, **no install, no build, no server required**.
 
 - **Easiest:** double-click `index.html` to open it in your browser.
 - **Recommended (so external thumbnails/fonts load reliably):** serve the folder locally and visit the URL:

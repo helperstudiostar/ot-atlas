@@ -113,15 +113,16 @@ Cadence: quarterly is enough for licensure/policy; after each Medicare fee sched
 (Nov) and AOTA annual (spring), consider an off-cycle pass. **Refresh is MANUAL, on owner
 request only — the owner declined scheduled automation (2026-07-16); do not propose cron.**
 
-## Deploying (owner action — accounts needed; everything else is ready)
-The repo is git-initialized (baseline 2026-07-19). To publish:
-1. Create a GitHub repo and push: `git remote add origin <url> && git push -u origin main`.
-2. Cloudflare Pages (or Netlify/GitHub Pages): connect the repo, **no build command**,
-   output directory = repo root. The app is fully static; the SW handles caching.
-3. Before going public: (a) decide whether to keep the owner email in the colophon
-   correction link (app.js `.foot-correct`) or point it at GitHub Issues; (b) add a real
-   1200×630 og:image PNG + 180×180 apple-touch-icon (F28/F42b — needs image tooling);
-   (c) consider real-path routing/prerender later for SEO (hash routes are crawler-invisible).
+## Deployed (2026-07-19)
+- **Live site:** https://helperstudiostar.github.io/ot-atlas/ (GitHub Pages, legacy build,
+  main branch root, no build step). Deploys automatically on every push to main.
+- **Repo:** https://github.com/helperstudiostar/ot-atlas — corrections arrive as GitHub
+  Issues via the colophon link.
+- Publishing flow for future sessions: edit → bump sw.js CACHE → verify locally →
+  commit → `git push` → Pages redeploys in ~1 min.
+- Still open before wide promotion: 1200×630 og:image PNG + 180×180 apple-touch-icon
+  (F28/F42b — image tooling); real-path routing/prerender for SEO (hash routes are
+  crawler-invisible); custom domain if wanted (repo Settings → Pages).
 
 ## Gotchas (learned the hard way)
 - **The Claude-Code browser pane runs the page as a HIDDEN document** (visibilityState
