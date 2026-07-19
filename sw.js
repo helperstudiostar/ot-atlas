@@ -6,13 +6,14 @@
  * │  cached copy until the version string changes and this SW re-installs.      │
  * └───────────────────────────────────────────────────────────────────────────┘
  */
-const CACHE = "ot-atlas-v28";
+const CACHE = "ot-atlas-v29";
 
 const CORE = [
   "./",
   "./index.html",
   "./manifest.json",
   "./assets/icon.svg",
+  "./assets/apple-touch-icon.png",
   "./assets/css/styles.css",
   "./assets/js/app.js",
   "./assets/js/data/foundations.js",

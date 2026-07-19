@@ -43,9 +43,11 @@ assets/js/data/
   bulletin.js              THE BULLETIN (#/bulletin, ch. 14) — dated what's-changed log;
                            refresh protocol in this file, below
   interventions.js         THE TREATMENTS (#/interventions, ch. 15) — 95 interventions on
-                           the 5-step evidence scale + practitioner/patient perspectives;
-                           PENDING CLINICIAN REVIEW (do not soften/strengthen ratings
-                           without re-checking the cited reviews)
+                           the 5-step evidence scale + practitioner/patient perspectives.
+                           REVIEW MODEL (owner decision 2026-07-19: no paid sign-off):
+                           OPEN PRACTITIONER REVIEW — transparent sourcing + REVIEWING.md
+                           checklist + GitHub Issues; incorporate reviews per REVIEWING.md
+                           ground rules; never soften/strengthen a rating without a source.
   rigor.js                 evidence ratings (strength/confidence/bias/sources/verified) keyed
                            by condition id + assessment name; EBP-study ratings; country facts.
                            Loads LAST and attaches `.evidence` onto existing entries.

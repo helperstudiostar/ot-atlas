@@ -1236,7 +1236,7 @@
     main.innerHTML = `<div class="page">
       <p class="eyebrow">What OT does, measured</p>
       <h1 class="page-title">Treatments &amp; <em>protocols</em></h1>
-      <p class="lede">${T.entries.length} interventions and protocols OTs use — what each one is, the dose where trials specify one, how strong the evidence is on the same five-step scale as the rest of this atlas, and what research, practitioners, and clients actually say. <span class="muted">Drafted from published evidence ${T.meta.reviewedOn.slice(0, 7)}; pending clinician review. Educational — not a substitute for individualised care.</span></p>
+      <p class="lede">${T.entries.length} interventions and protocols OTs use — what each one is, the dose where trials specify one, how strong the evidence is on the same five-step scale as the rest of this atlas, and what research, practitioners, and clients actually say. <span class="muted">Compiled from published evidence ${T.meta.reviewedOn.slice(0, 7)} — every entry carries its sources and rating; open for practitioner review. Educational — not a substitute for individualised care.</span></p>
       <div class="field" style="max-width:440px;margin-top:18px"><input type="text" id="txSearch" placeholder="Search treatments (e.g., CIMT, sensory, tendon)…" value="${escapeHTML(txQuery)}" aria-label="Search treatments"></div>
       <div class="chip-row" id="txChips">
         <button class="chip ${txFilter === "all" ? "active" : ""}" data-sec="all">All</button>
@@ -1249,6 +1249,7 @@
         <figcaption class="fig-cap"><span class="fig-no">FIG. 15·A</span> How this compendium was built — and how to read it.</figcaption>
         <p class="fig-body">${T.meta.method}</p>
         <p class="fig-eg">${T.meta.caveat}</p>
+        <p class="fig-eg"><strong>Are you an OT?</strong> Thirty minutes of your expertise makes this better for everyone — <a href="https://github.com/helperstudiostar/ot-atlas/blob/main/REVIEWING.md" target="_blank" rel="noopener">review a chapter ↗</a></p>
       </figure>
       ${pageFoot("interventions")}
     </div>`;
