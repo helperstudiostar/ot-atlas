@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Occupational Therapy Atlas — Practice, Evidence & Everyday Living</title>
+  <meta name="description" content="An extensive, evidence-informed guide to Occupational Therapy for practitioners, students, clients and families. Frameworks, domains, conditions, clinical reasoning, EBP, assessments, curated videos and interactive tools." />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#EAEEF4" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0E1621" media="(prefers-color-scheme: dark)" />
+  <link rel="canonical" href="./" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="The OT Atlas" />
+  <meta property="og:title" content="The OT Atlas — Occupational Therapy, in depth" />
+  <meta property="og:description" content="An evidence-informed occupational therapy reference for practitioners, students, clients and families — conditions, assessments, frameworks, clinical reasoning and interactive tools." />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="The OT Atlas — Occupational Therapy, in depth" />
+  <meta name="twitter:description" content="An evidence-informed occupational therapy reference — conditions, assessments, frameworks and interactive tools for practitioners and families." />
+
+  <!-- Fonts: Fraunces (warm optical serif) + Hanken Grotesk (humanist sans) + Spline Sans Mono (clinical labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,0..100,0..1;1,9..144,400..600,0..100,0..1&family=Hanken+Grotesk:wght@400..700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="assets/icon.svg" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23156B66'/%3E%3Cpath d='M50 36C43 31 30 31 23 34L23 66C30 63 43 63 50 68C57 63 70 63 77 66L77 34C70 31 57 31 50 36Z' fill='none' stroke='%23F4F6FA' stroke-width='6' stroke-linejoin='round'/%3E%3Cpath d='M50 36L50 68' stroke='%23E4633F' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Decorative grain / atmosphere -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Inline icon sprite: one consistent 24×24 outline set (1.8px stroke, currentColor).
+       Replaces emoji/unicode glyphs, which render inconsistently across platforms. -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m15 9-2 5-4 2 2-5z"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6.5C10.2 5 7.8 4.3 5 4.3V19c2.8 0 5.2.7 7 2.2 1.8-1.5 4.2-2.2 7-2.2V4.3c-2.8 0-5.2.7-7 2.2z"/><path d="M12 6.5v14.7"/></symbol>
+    <symbol id="i-pillars" viewBox="0 0 24 24"><path d="M3.5 9 12 4l8.5 5z"/><path d="M6 9v8M12 9v8M18 9v8"/><path d="M4 20h16"/></symbol>
+    <symbol id="i-hex" viewBox="0 0 24 24"><path d="M12 3.2 19.6 7.6v8.8L12 20.8 4.4 16.4V7.6z"/></symbol>
+    <symbol id="i-loop" viewBox="0 0 24 24"><path d="M20.5 12a8.5 8.5 0 1 1-2.5-6"/><path d="M20.5 2.5V6.5H16.5"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 4v16h16"/><path d="M9 16v-5M13.5 16V8M18 16v-3"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 8.5v7M8.5 12h7"/></symbol>
+    <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="6" y="4.5" width="12" height="16" rx="2"/><path d="M9.5 4.5a2.5 2.5 0 0 1 5 0"/><path d="m9 13 2.2 2.2 4.3-4.4"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M10.2 8.8v6.4l5.4-3.2z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M7 4.5h10V21l-5-3.6L7 21z"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.2S5 15.7 5 10.4A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.4c0 5.3-7 9.8-7 9.8z"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4.5 8h7M16.5 8h3M4.5 16h3M12.5 16h7"/><circle cx="14" cy="8" r="2.2"/><circle cx="10" cy="16" r="2.2"/></symbol>
+    <symbol id="i-brain" viewBox="0 0 24 24"><path d="M11.5 4.5a3 3 0 0 0-3 3A3.8 3.8 0 0 0 5 11.2a3.8 3.8 0 0 0 2.6 3.6A3.4 3.4 0 0 0 11 19.5h.5z"/><path d="M12.5 4.5a3 3 0 0 1 3 3 3.8 3.8 0 0 1 3.5 3.7 3.8 3.8 0 0 1-2.6 3.6 3.4 3.4 0 0 1-3.4 4.7h-.5z"/></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24"><path d="M7.5 11.5V6.4a1.3 1.3 0 0 1 2.6 0v4.1m0-5.1a1.3 1.3 0 0 1 2.6 0v5.1m0-4.1a1.3 1.3 0 0 1 2.6 0v4.6m0-2.6a1.3 1.3 0 0 1 2.6 0v5.1a7 7 0 0 1-7 7h-.4a7 7 0 0 1-5.4-2.6l-2-2.5a1.5 1.5 0 0 1 2.3-1.9l1.7 1.9"/></symbol>
+    <symbol id="i-child" viewBox="0 0 24 24"><circle cx="12" cy="6.5" r="2.7"/><path d="M4.5 13.5 8 11.2c2.4-1.5 5.6-1.5 8 0l3.5 2.3"/><path d="M12 12.5V17m0 0-3.2 4.5M12 17l3.2 4.5"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7.5 15.5a4 4 0 1 1 .7-7.9 5 5 0 0 1 9.7 1.4 3.4 3.4 0 0 1-1.2 6.5z"/><circle cx="8.5" cy="19" r="1"/><circle cx="5.7" cy="21.2" r="0.5"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5.5 18.5C5.5 10 11.5 5 19.5 4.5c-.5 8-5.5 14-14 14z"/><path d="M5.5 18.5C8 13.5 11.5 10 16 7.5"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 4 1.6 5.4L19 11l-5.4 1.6L12 18l-1.6-5.4L5 11l5.4-1.6z"/></symbol>
+    <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.3"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></symbol>
+    <symbol id="i-steth" viewBox="0 0 24 24"><path d="M6.5 4v4.5a4 4 0 0 0 8 0V4"/><path d="M10.5 12.4V15a4.5 4.5 0 0 0 9 0v-1.2"/><circle cx="19.5" cy="11.5" r="2.2"/></symbol>
+    <symbol id="i-grad" viewBox="0 0 24 24"><path d="m12 4.5-9.5 4.7L12 13.9l9.5-4.7z"/><path d="M6.5 11.5v4.2c0 1.5 2.5 2.8 5.5 2.8s5.5-1.3 5.5-2.8v-4.2"/><path d="M21.5 9.2v5"/></symbol>
+    <!-- F16 additions: reasoning modes, callout icons, tool marks, fallbacks -->
+    <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9.5 3h5"/><path d="M10.5 3.5v5.6L5.7 17.6a2 2 0 0 0 1.8 3h9a2 2 0 0 0 1.8-3l-4.8-8.5V3.5"/><path d="M8.2 14.5h7.6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20.5 11.5a7.5 7.5 0 0 1-10.9 6.7L4 20l1.3-4.1A7.5 7.5 0 1 1 20.5 11.5z"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.6"/></symbol>
+    <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 5v14M7 19h10"/><path d="M4.5 8.5h15"/><path d="M4.5 8.5 2.3 13a2.8 2.8 0 0 0 4.4 0z"/><path d="M19.5 8.5 17.3 13a2.8 2.8 0 0 0 4.4 0z"/><circle cx="12" cy="6" r="1.3"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11 12 4.5l8 6.5"/><path d="M5.8 10v9.5h12.4V10"/><path d="M10 19.5V14h4v5.5"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11.2v5"/><circle cx="12" cy="7.9" r=".7" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M8.5 15.6a6 6 0 1 1 7 0 2.5 2.5 0 0 0-1 2v.4h-5V17.6a2.5 2.5 0 0 0-1-2z"/><path d="M9.5 20.5h5"/></symbol>
+    <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><path d="M16.3 5.3a3 3 0 0 1 0 5.4"/><path d="M17.4 13.9A5.5 5.5 0 0 1 20.5 19"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M14.5 5.5 18.5 9.5"/><path d="m4 20 1.2-4.2L16 5a2.1 2.1 0 0 1 3 3L8.2 18.8z"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.7 9.5a2.4 2.4 0 0 1 4.6.7c0 1.6-2.3 2-2.3 3.4"/><circle cx="12" cy="16.6" r=".7" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 4.2 21 19.5H3z"/><path d="M12 10v4.3"/><circle cx="12" cy="17.2" r=".7" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5 10 17.5 19.5 7"/></symbol>
+    <symbol id="i-cross" viewBox="0 0 24 24"><path d="M6.5 6.5 17.5 17.5M17.5 6.5 6.5 17.5"/></symbol>
+    <symbol id="i-dot" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6.5" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M14 4.5h5.5V10"/><path d="M19.5 4.5 11 13"/><path d="M18 14v3.5a2 2 0 0 1-2 2H6.5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2H10"/></symbol>
+    <!-- F44 "the everyday, drawn": spot illustrations of everyday objects (64-box, looser line art).
+         Accent strokes are inline-styled so they survive the <use> shadow boundary. -->
+    <symbol id="i-obj-mug" viewBox="0 0 64 64">
+      <path d="M17.5 26.5 C21.5 24.2 42.5 24.2 46.5 26.5"/>
+      <path d="M17.5 26.5 C17 38 19 47.5 22.5 50 C26 52.3 38 52.3 41.5 50 C45 47.5 47 38 46.5 26.5"/>
+      <path d="M46.8 31.5 C53.5 30.3 56.2 34.5 55.1 38 C54 41.6 49.5 43.2 45.8 42.4"/>
+      <path style="stroke:var(--clay);stroke-opacity:.75" d="M27.5 18 C25.5 14.5 29.5 12.5 28 9"/>
+      <path style="stroke:var(--clay);stroke-opacity:.75" d="M36.5 18 C34.5 14.5 38.5 12.5 37 9"/>
+    </symbol>
+    <symbol id="i-obj-shoe" viewBox="0 0 64 64">
+      <path d="M9.5 43.5 C9.5 39.5 12.5 37.8 16.5 36.3 C22.5 34 26.5 29 28.5 24.5 C29.4 22.4 31.6 21.8 33.4 23 C36.8 25.3 41.5 28.4 47 30 C52.5 31.6 55.8 34.3 56.3 38.5 L56.6 41.2 C56.8 43 55.5 44.5 53.7 44.5 L12.4 44.5 C10.8 44.5 9.5 44.2 9.5 43.5 Z"/>
+      <path d="M10 40.6 C14.5 42.3 20 42.5 25 41.4"/>
+      <path d="M28.5 31.5 L36 28.6 M31 35 L38.8 32"/>
+      <path style="stroke:var(--clay);stroke-opacity:.75" d="M33.6 23.2 C32 19.5 36.2 17.5 34.7 13.5"/>
+    </symbol>
+    <symbol id="i-obj-pencil" viewBox="0 0 64 64">
+      <path d="M14 45.5 L40.5 19"/>
+      <path d="M20.5 52 L47 25.5"/>
+      <path d="M40.5 19 L52 13.5 L47 25.5"/>
+      <path style="stroke:var(--clay);stroke-opacity:.75" d="M49.4 14.7 L52 13.5"/>
+      <path d="M14 45.5 L20.5 52"/>
+      <path d="M17.2 42.3 L23.7 48.8"/>
+    </symbol>
+    <symbol id="i-obj-spoon" viewBox="0 0 64 64">
+      <path d="M37.5 26.5 C32.5 21.5 34.5 12 41.5 9.5 C48.5 7 55.5 12 54 19 C52.5 26 42.5 31.5 37.5 26.5 Z"/>
+      <path d="M38 26 L12 52"/>
+      <path style="stroke:var(--clay);stroke-opacity:.75" d="M43.5 14.5 C45.5 13.2 48.5 14 49.5 16.5"/>
+    </symbol>
+    <symbol id="i-obj-key" viewBox="0 0 64 64">
+      <circle cx="22" cy="22" r="8.6"/>
+      <circle style="stroke:var(--clay);stroke-opacity:.75" cx="22" cy="22" r="3"/>
+      <path d="M28.3 28.3 L46.5 46.5"/>
+      <path d="M41 41 L37.5 44.5 M45.5 45.5 L42 49"/>
+    </symbol>
+  </svg>
+
+  <header class="topbar" role="banner">
+    <button class="icon-btn nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidenav">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+
+    <a class="brand" href="#/home" aria-label="The OT Atlas — home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 100 100" width="34" height="34" fill="none" stroke-linejoin="round">
+          <path d="M50 34C42 28 28 28 20 31L20 69C28 66 42 66 50 72C58 66 72 66 80 69L80 31C72 28 58 28 50 34Z" stroke="currentColor" stroke-width="6"/>
+          <path d="M50 34L50 72" stroke="var(--clay)" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <strong>The OT Atlas</strong>
+        <em>Occupational Therapy, in depth</em>
+      </span>
+    </a>
+
+    <div class="topbar-tools">
+      <div class="seg" id="modeToggle" role="group" aria-label="Audience mode">
+        <button type="button" data-mode="public" aria-pressed="false" aria-label="Public view — plain language for clients and families" title="Plain-language view for clients, families and the public"><svg class="icn" aria-hidden="true"><use href="#i-person"></use></svg><span class="seg-lbl">Public</span></button>
+        <button type="button" data-mode="clinical" aria-pressed="true" aria-label="Clinical view — interventions, assessments and evidence tags" title="Full clinical view with interventions, assessments and evidence tags"><svg class="icn" aria-hidden="true"><use href="#i-steth"></use></svg><span class="seg-lbl">Clinical</span></button>
+      </div>
+      <button class="plain-toggle" id="plainToggle" type="button" aria-pressed="false" aria-label="Toggle plain language" title="Plain-language wording and roomier text">
+        <span class="pt-dot" aria-hidden="true"></span><span class="pt-abbr" aria-hidden="true">Aa</span><span class="seg-lbl">Plain&nbsp;language</span>
+      </button>
+      <button class="search-trigger" id="searchTrigger" aria-label="Search the atlas">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span>Search</span>
+        <kbd>/</kbd>
+      </button>
+      <button class="icon-btn" id="fontSizeToggle" type="button" aria-label="Text size: default. Activate to increase." title="Text size">
+        <span class="fs-label" aria-hidden="true">A</span>
+      </button>
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle light and dark theme">
+        <svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="shell">
+    <nav class="sidenav" id="sidenav" aria-label="Sections">
+      <div class="sidenav-inner">
+        <p class="nav-eyebrow">Orientation</p>
+        <ul class="nav-list">
+          <li><a data-route="home" href="#/home"><span class="ni" aria-hidden="true"><svg class="icn"><use href="#i-compass"></use></svg></span> Start here</a></li>
+          <li><a data-route="foundations" href="#/foundations"><span class="ni" aria-hidden="true"><svg class="icn"><use href="#i-book"></use></svg></span> Foundations &amp; profession</a></li>
+        </ul>
+
+        <p class="nav-eyebrow" data-aud="pro">The framework</p>
+        <ul class="nav-list">
+          <li><a data-route="pillars" data-aud="pro" href="#/pillars"><span class="ni" aria-hidden="true"><svg class="icn"><use href="#i-pillars"></use></svg></span> Domain &amp; the OT process</a></li>
+          <li><a data-route="models" data-aud="pro" href="#/models"><span class="ni" aria-hidden="true"><svg class="icn"><use href="#i-hex"></use></svg></span> Models &amp; frames of reference</a></li>
+          <li><a data-route="reasoning" data-aud="pro" href="#/reasoning"><span class="ni" aria-hidden="true"><svg class="icn"><use href="#i-loop"></use></svg></span> Clinical reasoning</a></li>
+          <li><a data-route="evidence" data-aud="pro" href="#/evidence"><span class="ni" aria-hidden="true"><svg class="icn"><use href="#i-chart"></use></svg></span> Evidence-based practice</a></li>
+        </ul>
+
+        <p class="nav-eyebrow">Reference library</p>
+        <ul class="nav-list">
+          <li><a data-route="conditions" href="#/conditions"><span class="ni" aria-hidden="true"><svg class="icn"><use href="#i-plus"></use></svg></span> Conditions library</a></li>
+          <li><a data-route="assessments" data-aud="pro" href="#/assessments"><span class="ni" aria-hidden="true"><svg class="icn"><use href="#i-clipboard"></use></svg></span> Assessments &amp; measures</a></li>
+          <li><a data-route="videos" href="#/videos"><span class="ni" aria-hidden="true"><svg class="icn"><use href="#i-play"></use></svg></span> Video library</a></li>
+          <li><a data-route="resources" href="#/resources"><span class="ni" aria-hidden="true"><svg class="icn"><use href="#i-bookmark"></use></svg></span> Resources &amp; glossary</a></li>
+          <li><a data-route="directory" href="#/directory"><span class="ni" aria-hidden="true"><svg class="icn"><use href="#i-link"></use></svg></span> The OT directory</a></li>
+          <li><a data-route="bulletin" href="#/bulletin"><span class="ni" aria-hidden="true"><svg class="icn"><use href="#i-pen"></use></svg></span> What&rsquo;s changed</a></li>
+          <li><a data-route="interventions" data-aud="pro" href="#/interventions"><span class="ni" aria-hidden="true"><svg class="icn"><use href="#i-hand"></use></svg></span> Treatments &amp; protocols</a></li>
+        </ul>
+
+        <p class="nav-eyebrow">Get help &amp; do</p>
+        <ul class="nav-list">
+          <li><a data-route="clients" href="#/clients"><span class="ni" aria-hidden="true"><svg class="icn"><use href="#i-heart"></use></svg></span> For clients &amp; families</a></li>
+          <li><a data-route="toolkit" href="#/toolkit"><span class="ni" aria-hidden="true"><svg class="icn"><use href="#i-sliders"></use></svg></span> Interactive toolkit</a></li>
+        </ul>
+
+        <div class="nav-foot">
+          <p>An educational resource. Not medical advice — for individual care, consult a licensed occupational therapist.</p>
+        </div>
+      </div>
+    </nav>
+
+    <div class="scrim" id="scrim" hidden></div>
+
+    <main id="main" class="view" tabindex="-1" role="main">
+      <!-- Routed content renders here -->
+      <div class="view-loading">
+        <svg class="loading-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+          <path class="lm-cover" d="M50 34C42 28 28 28 20 31L20 69C28 66 42 66 50 72C58 66 72 66 80 69L80 31C72 28 58 28 50 34Z" fill="none" stroke="currentColor" stroke-width="6" pathLength="100"/>
+          <path class="lm-spine" d="M50 34L50 72" fill="none" stroke="var(--clay)" stroke-width="5" stroke-linecap="round" pathLength="100"/>
+        </svg>
+        <p>Loading the atlas…</p>
+      </div>
+      <noscript>
+        <div style="max-width:640px;margin:64px auto;padding:0 24px;line-height:1.6">
+          <h1 style="font-family:Georgia,serif">The OT Atlas needs JavaScript</h1>
+          <p>This is an interactive occupational-therapy reference. Please enable JavaScript to load the conditions library, assessments, evidence ratings and tools. An educational resource — not medical advice.</p>
+        </div>
+      </noscript>
+    </main>
+  </div>
+
+  <!-- Screen-reader announcements for SPA route changes -->
+  <div id="routeStatus" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Floating back-to-top for long reference pages (F4). Revealed by JS past ~2 viewports. -->
+  <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top" hidden>
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <!-- Search overlay -->
+  <div class="search-overlay" id="searchOverlay" hidden role="dialog" aria-modal="true" aria-label="Search the OT Atlas">
+    <div class="search-panel">
+      <div class="search-input-row">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input type="search" id="searchInput" placeholder="Search conditions, models, assessments, terms, videos…" autocomplete="off" aria-label="Search query" role="combobox" aria-expanded="false" aria-controls="searchResults" aria-autocomplete="list" aria-haspopup="listbox" />
+        <button class="icon-btn" id="searchClose" aria-label="Close search">esc</button>
+      </div>
+      <div class="search-results" id="searchResults" role="listbox" aria-label="Search results" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <!-- Data layers -->
+  <script src="assets/js/data/foundations.js" defer></script>
+  <script src="assets/js/data/models.js" defer></script>
+  <script src="assets/js/data/reasoning.js" defer></script>
+  <script src="assets/js/data/conditions.js" defer></script>
+  <script src="assets/js/data/assessments.js" defer></script>
+  <script src="assets/js/data/evidence.js" defer></script>
+  <script src="assets/js/data/videos.js" defer></script>
+  <script src="assets/js/data/resources.js" defer></script>
+  <script src="assets/js/data/directory.js" defer></script>
+  <script src="assets/js/data/bulletin.js" defer></script>
+  <script src="assets/js/data/interventions.js" defer></script>
+  <!-- Rigor layer: evidence metadata + country facts (must load after the data it annotates) -->
+  <script src="assets/js/data/rigor.js" defer></script>
+  <!-- App -->
+  <script src="assets/js/app.js" defer></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("sw.js").catch(function () {});
+      });
+    }
+  </script>
+</body>
+</html>

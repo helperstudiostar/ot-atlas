@@ -1,0 +1,15 @@
+{
+  "name": "The OT Atlas",
+  "short_name": "OT Atlas",
+  "description": "An evidence-informed occupational therapy reference — conditions, assessments, frameworks, clinical reasoning and interactive tools for practitioners and families.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#EAEEF4",
+  "theme_color": "#EAEEF4",
+  "categories": ["education", "medical", "reference"],
+  "icons": [
+    { "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
