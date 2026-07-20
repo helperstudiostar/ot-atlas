@@ -7,6 +7,59 @@ session end — sessions may be cut by usage limits. Partial entries are expecte
 
 ---
 
+## 2026-07-19 (cont) — [F59] THOROUGH PASS + NEW-SESSION PREP (Fable 5 + 2 audit agents, owner: "do a thorough pass and prep a new session") — COMPLETE
+**Owner spotted the shoe icon** ("what is this supposed to be?") — it read as a candle/tent.
+Diagnosis: the silhouette peaked in the MIDDLE (shoes are asymmetric: low toe, high heel
+collar) and it had inherited the MUG's rising steam squiggle, so the object looked lit.
+**Redrawn** as a true side profile — flat sole, rounded toe left, ankle collar right, three
+coral laces as the accent. Verified against the other four objects at 150px and 48px: the
+whole i-obj set now reads instantly.
+**[BUG, found by the data-integrity agent] 19 directory entries had no `url`** and rendered
+`<a href="undefined">Visit undefined ↗</a>` — a live dead link on the public site (4 YouTube,
+1 site, 14 podcasts, mostly small shows with no stable page). Fixed with a guard: entries
+without a URL now render "No stable public URL recorded — search the name on your podcast app
+or the web." Verified: zero `undefined` links remain.
+**[F59] CHAPTER RENUMBER — the numbers now run in reading order.** They used to jump
+07,08,09,10 → 13,14,15 for REFERENCE and 11,12 → 16,17 for GET HELP & DO, because chapters
+11-15 were appended after the get-help group. Now: 01-02 ORIENTATION · 03-06 THE FRAMEWORK ·
+07-13 REFERENCE · 14-17 GET HELP & DO, contiguous and matching the nav. Directory 13→**11**
+(plates 11·n, FIG. 11·A), bulletin 14→**12** (FIG. 12·A), treatments 15→**13** (plates 13·n,
+FIG. 13·A), clients 11→14, toolkit 12→15. `ROUTE_COORD` key order reordered to match (it is
+load-bearing — it drives the colophon chain); conditions/assessments/models plate numbers
+unchanged. A comment now says so, and the gotcha is in HANDOFF.
+**Audits run (2 sonnet agents, report files in session scratchpad):**
+- *Data integrity*: no duplicate ids anywhere · no enum/reference mismatches · rigor.js
+  attaches evidence to 100% of conditions (66) and assessments (58) · all 76 bulletin dates
+  well-formed · no malformed URLs. Only real finding was the undefined-url bug above.
+- *Docs staleness*: 24 findings across README/HANDOFF/PLAN — all fixed. Stale counts
+  ("51-condition", "41 assessments", "58-term glossary"), missing chapters 16/17 in every
+  feature/structure table, og:image described as pending when the same commit shipped it,
+  "all 12 routes" ×9 in PLAN's verification instructions, "PENDING CLINICIAN SIGN-OFF" ×8
+  contradicting the open-review decision, and a stale code comment ("14-chapter chain").
+**Docs rewritten for handoff:** PLAN.md gained a **STATE OF PLAY** block at the very top
+(17 chapters · deployed · open-review model · counts · SW version · "chapters 11-17 are not
+described below"). HANDOFF.md TL;DR, structure, QA and deploy sections corrected, plus a
+fully rewritten **new-session brief** (5 ground rules incl. the SW double-bump footgun, the
+evidence-honesty law, the kit ration, and the hidden-document pane limits) and a new
+**"Where to pick up"** section ranking the six candidate next moves and listing the known
+non-blocking gaps honestly.
+**Also:** keyboard hints on study cards hidden on touch devices (`pointer: coarse`).
+**Evidence (actual tool output):**
+```
+17-route sweep ×3 (pre-renumber, post-renumber, final): every route renders, h1 + coord
+  present on all 17, 0 unlabeled inputs, 0 heading skips, 0 empty links, console clean.
+Coords verified 01→17 contiguous by group; plates 11·1 / 13·1; FIG. 11·A / 12·A / 13·A;
+  drawer stamp still "PLATE 07·1 — NEURO, PHYSICAL & MSK REHAB".
+Colophon chain: resources→directory→bulletin ... interventions→clients ... toolkit→study
+  ... students→"Start again at the beginning".
+Directory: dirUndefinedLinks 0; urlless entry (StrokeOT, Inc.) shows the fallback line.
+375px: zero horizontal overflow on 11 sampled routes. Dark theme correct on the new chapters.
+CSS braces 720/720. caches → ["ot-atlas-v36"] (v34→v35→v36 across the three edit rounds).
+```
+**Handoff state: the app is deployed, audited, and clean; nothing is broken.** Next moves are
+ranked in HANDOFF "Where to pick up" — #1 is recruiting practitioner reviews (owner action,
+costs a forum post).
+
 ## 2026-07-19 (cont) — [F57+F58] BUILD-OUT: study cards · abbreviation decoder · SEO · handouts · the student's shelf (Fable 5 + 3 agents, owner: "build all you can") — COMPLETE
 **[F57] STUDY CARDS (chapter 16, `#/study`, GET HELP & DO, i-grad):** flashcards generated
 from the atlas's own data — zero separate content to maintain. 351-card "Everything" deck +

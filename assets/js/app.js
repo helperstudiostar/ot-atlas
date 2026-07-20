@@ -1186,7 +1186,7 @@
       <p class="count-note" id="dirCount" aria-live="polite"></p>
       <div class="idx" id="dirList"></div>
       <figure class="fig" style="margin-top:36px">
-        <figcaption class="fig-cap"><span class="fig-no">FIG. 13·A</span> How this directory was curated — and why you should still check for yourself.</figcaption>
+        <figcaption class="fig-cap"><span class="fig-no">FIG. 11·A</span> How this directory was curated — and why you should still check for yourself.</figcaption>
         <p class="fig-body">${D.meta.method}</p>
         <p class="fig-eg">${D.meta.caveat}</p>
       </figure>
@@ -1200,7 +1200,7 @@
         return okSec && okQ;
       });
       $("#dirCount").textContent = `${items.length} ${items.length === 1 ? "entry" : "entries"}`;
-      // Stable 13·n numbers: position within the full section, filter-independent (F49 rule).
+      // Stable 11·n numbers: position within the full section, filter-independent (F49 rule).
       const plateNo = new Map(), perSec = {};
       D.entries.forEach(e => { perSec[e.sec] = (perSec[e.sec] || 0) + 1; plateNo.set(e, perSec[e.sec]); });
       const host = u => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch (err) { return u; } };
@@ -1211,7 +1211,7 @@
         <header class="idx-head"><h2>${x.s.label}</h2><span class="idx-count">${x.list.length} of ${perSec[x.s.key]}</span></header>
         <ul class="idx-list">${x.list.map(e => `<li><details class="idx-x">
           <summary class="idx-row">
-            <span class="idx-main"><span class="idx-no">13·${plateNo.get(e)}</span><span class="idx-name">${e.name}</span><span class="idx-leader" aria-hidden="true"></span>${/^free\b/i.test(e.sells || "") ? `<span class="tag teal">free</span>` : ""}<span class="idx-tgl" aria-hidden="true">+</span></span>
+            <span class="idx-main"><span class="idx-no">11·${plateNo.get(e)}</span><span class="idx-name">${e.name}</span><span class="idx-leader" aria-hidden="true"></span>${/^free\b/i.test(e.sells || "") ? `<span class="tag teal">free</span>` : ""}<span class="idx-tgl" aria-hidden="true">+</span></span>
             <span class="idx-desc">${e.focus || ""}</span>
           </summary>
           <div class="idx-wrap"><div class="idx-detail">
@@ -1220,7 +1220,7 @@
             ${e.sells ? `<p><strong>Costs &amp; sells.</strong> ${e.sells}</p>` : ""}
             ${e.reput ? `<p><strong>Reputation.</strong> ${e.reput}</p>` : ""}
             ${e.bias ? `<p><strong>Bias watch.</strong> ${e.bias}</p>` : ""}
-            <p><a href="${e.url}" target="_blank" rel="noopener">Visit ${host(e.url)} ↗</a></p>
+            ${e.url ? `<p><a href="${e.url}" target="_blank" rel="noopener">Visit ${host(e.url)} ↗</a></p>` : `<p class="muted small">No stable public URL recorded — search the name on your podcast app or the web.</p>`}
           </div></div>
         </details></li>`).join("")}</ul>
       </section>`).join("") ||
@@ -1374,7 +1374,7 @@
       <p class="count-note" id="txCount" aria-live="polite"></p>
       <div class="idx" id="txList"></div>
       <figure class="fig" style="margin-top:36px">
-        <figcaption class="fig-cap"><span class="fig-no">FIG. 15·A</span> How this compendium was built — and how to read it.</figcaption>
+        <figcaption class="fig-cap"><span class="fig-no">FIG. 13·A</span> How this compendium was built — and how to read it.</figcaption>
         <p class="fig-body">${T.meta.method}</p>
         <p class="fig-eg">${T.meta.caveat}</p>
         <p class="fig-eg"><strong>Are you an OT?</strong> Thirty minutes of your expertise makes this better for everyone — <a href="https://github.com/helperstudiostar/ot-atlas/blob/main/REVIEWING.md" target="_blank" rel="noopener">review a chapter ↗</a></p>
@@ -1399,7 +1399,7 @@
         <header class="idx-head"><h2>${x.sc.label}</h2><span class="idx-count">${x.list.length} of ${perSec[x.sc.key]}</span></header>
         <ul class="idx-list">${x.list.map(e => `<li><details class="idx-x">
           <summary class="idx-row">
-            <span class="idx-main"><span class="idx-no">15·${plateNo.get(e)}</span><span class="idx-name">${e.name}</span><span class="idx-leader" aria-hidden="true"></span>${e.aka ? `<span class="tag teal">${escapeHTML(e.aka)}</span>` : ""}${e.evidence ? evMiniBadge(e.evidence) : ""}<span class="idx-tgl" aria-hidden="true">+</span></span>
+            <span class="idx-main"><span class="idx-no">13·${plateNo.get(e)}</span><span class="idx-name">${e.name}</span><span class="idx-leader" aria-hidden="true"></span>${e.aka ? `<span class="tag teal">${escapeHTML(e.aka)}</span>` : ""}${e.evidence ? evMiniBadge(e.evidence) : ""}<span class="idx-tgl" aria-hidden="true">+</span></span>
             <span class="idx-desc">${e.pop ? `${escapeHTML(e.pop)} — ` : ""}${e.what ? e.what.split(". ")[0] + "." : ""}</span>
           </summary>
           <div class="idx-wrap"><div class="idx-detail">
@@ -1461,7 +1461,7 @@
       <p class="count-note" id="bulCount" aria-live="polite"></p>
       <div class="idx" id="bulList"></div>
       <figure class="fig" style="margin-top:36px">
-        <figcaption class="fig-cap"><span class="fig-no">FIG. 14·A</span> How this log is kept — and its honest limits.</figcaption>
+        <figcaption class="fig-cap"><span class="fig-no">FIG. 12·A</span> How this log is kept — and its honest limits.</figcaption>
         <p class="fig-body">${B.meta.method}</p>
         <p class="fig-eg">${B.meta.caveat}</p>
       </figure>
@@ -2041,8 +2041,8 @@
     resources: renderResources, clients: renderClients, toolkit: renderToolkit
   };
   // F37: pageFoot doubles as a map-legend colophon — reviewed date, typeface credits, an AA
-  // note, and a "Continue the atlas" link driven by ROUTE_COORD's order (the 14-chapter chain;
-  // bulletin, 14 of 14, wraps to home). `key` is the CALLING route so we know what's "next".
+  // note, and a "Continue the atlas" link driven by ROUTE_COORD's order (the 17-chapter chain;
+  // students, 17 of 17, wraps to home). `key` is the CALLING route so we know what's "next".
   function pageFoot(key) {
     const rev = (RIG() && RIG().reviewedOn) ? RIG().reviewedOn : "";
     const order = Object.keys(ROUTE_COORD);
@@ -2150,16 +2150,19 @@
     setTimeout(() => targets.forEach(el => el.classList.add("revealed")), 1600);
   }
   // F31: Honest Atlas chapter coordinates — one stamp per route, mirrors the nav groups.
+  // Key ORDER is meaningful: it drives the colophon's "Continue the atlas →" chain, so it
+  // must match the nav order and the chapter numbers (F59 renumber — the numbers used to jump
+  // 10→13 because chapters 13-15 were appended after the GET HELP & DO group).
   const ROUTE_COORD = {
     home: "01 · ORIENTATION", foundations: "02 · ORIENTATION",
     pillars: "03 · THE FRAMEWORK", models: "04 · THE FRAMEWORK",
     reasoning: "05 · THE FRAMEWORK", evidence: "06 · THE FRAMEWORK",
     conditions: "07 · REFERENCE", assessments: "08 · REFERENCE",
     videos: "09 · REFERENCE", resources: "10 · REFERENCE",
-    clients: "11 · GET HELP & DO", toolkit: "12 · GET HELP & DO",
-    directory: "13 · REFERENCE",  // the appendix — external resources, added 2026-07 (F50)
-    bulletin: "14 · REFERENCE",   // notes to this edition — what's changed, added 2026-07 (F51)
-    interventions: "15 · REFERENCE", // treatments & protocols compendium, added 2026-07 (F53)
+    directory: "11 · REFERENCE",     // the appendix — external resources (F50)
+    bulletin: "12 · REFERENCE",      // notes to this edition — what's changed (F51)
+    interventions: "13 · REFERENCE", // treatments & protocols compendium (F53)
+    clients: "14 · GET HELP & DO", toolkit: "15 · GET HELP & DO",
     study: "16 · GET HELP & DO",     // study cards — flashcards from the atlas's own data (F57)
     students: "17 · GET HELP & DO"   // the student's shelf — NBCOT/fieldwork/careers (F58)
   };

@@ -7,9 +7,15 @@ the project — including a ready-to-paste brief for a fresh Claude Code session
 ---
 
 ## TL;DR
-A complete, verified, static web app: **The OT Atlas** — a comprehensive Occupational
-Therapy educational resource for both practitioners/students and clients/families.
-No build step, no dependencies. Open `index.html` or run the local preview server.
+**The OT Atlas** — a 17-chapter, evidence-honest Occupational Therapy reference for
+practitioners, students, clients and families. Static: no build step, no dependencies,
+no framework. **Live at https://helperstudiostar.github.io/ot-atlas/** (auto-deploys on
+push to `main`). Open `index.html` locally, or run the preview server.
+
+**Scale (verified 2026-07-19):** 66 conditions · 58 assessments · 95 evidence-rated
+treatments · 148 external resources · 76 dated bulletin notes · 130 abbreviations ·
+66 glossary terms · ~350 generated study cards. Every clinical rating carries its sources
+and a 5-step strength scale; nothing claims more certainty than it has.
 
 ## Run / preview
 - **Simplest:** double-click `index.html`.
@@ -36,13 +42,16 @@ assets/js/data/
   conditions.js            66-condition library
   assessments.js           58 standardised assessments
   evidence.js              EBP steps, levels, databases, landmark studies, journals
-  resources.js             orgs, client-facing guidance, self-management, glossary (58 terms)
+  resources.js             orgs, client-facing guidance, self-management, glossary (66 terms)
   videos.js                curated video library (verified YouTube IDs) + channels
-  directory.js             THE DIRECTORY (#/directory, ch. 13) — 148 external resources,
+  directory.js             THE DIRECTORY (#/directory, ch. 11) — 148 external resources,
                            honesty-rated (prices/reputation/bias, "as of 2026-07")
-  bulletin.js              THE BULLETIN (#/bulletin, ch. 14) — dated what's-changed log;
+  bulletin.js              THE BULLETIN (#/bulletin, ch. 12) — dated what's-changed log;
                            refresh protocol in this file, below
-  interventions.js         THE TREATMENTS (#/interventions, ch. 15) — 95 interventions on
+  abbreviations.js         130-entry abbreviation decoder (rendered on the Resources page)
+  studenthub.js            THE STUDENT'S SHELF (#/students, ch. 17) — NBCOT, fieldwork,
+                           OT vs OTA, careers & pay; figures carry their sourcing caveats
+  interventions.js         THE TREATMENTS (#/interventions, ch. 13) — 95 interventions on
                            the 5-step evidence scale + practitioner/patient perspectives.
                            REVIEW MODEL (owner decision 2026-07-19: no paid sign-off):
                            OPEN PRACTITIONER REVIEW — transparent sourcing + REVIEWING.md
@@ -81,8 +90,11 @@ teal (`--teal`) + terracotta/clay accent (`--clay`), sage/ochre highlights. Font
 are CSS variables with full light/dark variants. Keep this aesthetic consistent for new UI.
 
 ## QA already completed
-- Verified live in-browser: all 12 routes render, light/dark themes, global search, detail
-  drawers, and all 5 interactive tools — **zero console errors**.
+- Verified live in-browser (2026-07-19): all **17 routes** render in both themes, no horizontal
+  overflow at 375px, **zero unlabeled inputs, zero heading skips**, global search, detail drawers,
+  study cards and all 5 interactive tools — **zero console errors**.
+- Data integrity audited 2026-07-19: no duplicate ids, no enum/reference mismatches, rigor.js
+  attaches evidence to 100% of conditions and assessments, all bulletin dates well-formed.
 - Adversarial multi-agent audit: no code/runtime bugs; fixed 2 dead CDC links and a set of
   clinical-accuracy/scope corrections.
 - All embedded YouTube IDs validated as real via the oEmbed endpoint.
@@ -122,11 +134,18 @@ request only — the owner declined scheduled automation (2026-07-16); do not pr
   Issues via the colophon link.
 - Publishing flow for future sessions: edit → bump sw.js CACHE → verify locally →
   commit → `git push` → Pages redeploys in ~1 min.
-- Still open before wide promotion: 1200×630 og:image PNG + 180×180 apple-touch-icon
-  (F28/F42b — image tooling); real-path routing/prerender for SEO (hash routes are
-  crawler-invisible); custom domain if wanted (repo Settings → Pages).
+- ✅ Done: og:image (1200×630) + apple-touch-icon (180×180) — generated in-browser from the
+  app's own fonts, wired to the live URL; robots.txt + sitemap.xml + JSON-LD.
+- Still open before wide promotion: real-path routing/prerender for SEO (hash routes are
+  crawler-invisible to most crawlers); custom domain if wanted (repo Settings → Pages);
+  privacy-friendly analytics (needs an owner account).
 
 ## Gotchas (learned the hard way)
+- **`ROUTE_COORD` key ORDER is load-bearing.** It drives the chapter numbers, the coordinate
+  stamps, and the colophon's "Continue the atlas →" chain. Chapters were renumbered 2026-07-19
+  so the numbers run 01–17 in nav order; adding a chapter means inserting it in the right
+  position, not appending, and updating the hardcoded plate prefixes (`11·n` directory,
+  `13·n` treatments) and FIG numbers in the matching render function.
 - **The Claude-Code browser pane runs the page as a HIDDEN document** (visibilityState
   "hidden"): timers throttle to ~1/min, IntersectionObserver/rAF never fire, screenshots can
   desync after programmatic scroll (capture at scrollTop 0 / fresh tab / tall viewport).
@@ -149,14 +168,69 @@ request only — the owner declined scheduled automation (2026-07-16); do not pr
 ---
 
 ## For a new Claude Code session
-Open a new session **in this folder** and paste this as your first message:
 
-> This folder contains "The OT Atlas," a complete, verified static web app (a comprehensive
-> Occupational Therapy educational resource for practitioners and the public). Read
-> `HANDOFF.md` and `README.md` first, then skim `index.html`, `assets/js/app.js`, and
-> `assets/js/data/*.js` to orient yourself before changing anything. It's 100% static (no
-> build); preview with `node .claude/static-server.js` on port 4178 (use Node, not Python).
-> To extend it, add an entry to the relevant `assets/js/data/*.js` file. Verify any change
-> live in the browser preview (zero console errors across all routes is the bar), and verify
-> any new YouTube IDs via the oEmbed endpoint before embedding them.
-> My task: <describe what you want, or "just confirm it still runs after the move">
+Open a session **in this folder** and paste this as your first message:
+
+> This folder is **The OT Atlas** — a 17-chapter, deployed, static Occupational Therapy
+> reference (no build step, no framework, no dependencies). Live at
+> https://helperstudiostar.github.io/ot-atlas/ ; repo `helperstudiostar/ot-atlas`; it
+> auto-deploys on push to `main`.
+>
+> **Read `HANDOFF.md` (this file) and the top "STATE OF PLAY" block of `PLAN.md` first.**
+> Then skim the most recent PROGRESS.md entries. Do NOT read every data file — they are
+> large; each backlog item names the files it touches.
+>
+> Ground rules that matter:
+> 1. **Bump `sw.js` CACHE on ANY asset edit — and bump AGAIN if you edit after a bump.**
+>    The cache-first service worker will otherwise serve stale files to you *and* to real
+>    users. This is the #1 footgun in this project; it has bitten three times.
+> 2. **Verify live before claiming anything works**: run the preview, sweep all 17 routes,
+>    require zero console errors, and paste the ACTUAL tool output into PROGRESS.md. Never
+>    claim success from code-reading alone.
+> 3. **Evidence honesty is the product.** Never soften or strengthen an evidence rating
+>    without a source; never invent a number, price, date or citation — omit instead, or
+>    state the uncertainty inline. `rigor.js` ratings and clinical text are not to be edited
+>    casually. Sources become "verified" only by adding a WebFetch-confirmed domain to
+>    `rigor.js` `_confirmed`.
+> 4. **Design law: the book, not the component kit.** No new grids of identical rounded
+>    cards, no tinted callout boxes, no chip-and-icon clutter. The atlas's language is
+>    numbered figures (`FIG. 07·A`), index rows on hairlines with plate numbers, margin
+>    notes, run-in prose. See "THE KIT RATION" in PLAN.md before designing anything.
+> 5. **Chapter numbers run 01–17 in nav order** and drive both the coordinate stamps and the
+>    colophon's "Continue the atlas →" chain (`ROUTE_COORD` key order is load-bearing).
+>
+> Environment notes: the Claude-Code browser pane runs the page as a **hidden document**, so
+> IntersectionObserver/rAF/CSS transitions do not run there — animation can be *guarded* but
+> not observed; screenshots go stale after programmatic scrolling (capture at scrollTop 0, a
+> tall viewport, or a fresh tab). Preview with `node .claude/static-server.js` (Node, not
+> Python). Bash has **no network** — use WebFetch/WebSearch for anything online.
+>
+> My task: <describe it>
+
+---
+
+## Where to pick up (as of 2026-07-19)
+
+**Nothing is broken.** The app is deployed, audited and clean. Candidate next moves, roughly
+by value:
+
+1. **Recruit practitioner reviews** (owner action): post the link to r/OccupationalTherapy or
+   CommunOT. `REVIEWING.md` is the 30-minute reviewer checklist; reviews arrive as GitHub
+   Issues; reviewers get named credit. This is the project's main credibility gap and it
+   costs nothing but a post.
+2. **Assessment norms & cutoffs** — add scoring ranges/cutoffs to the 58 assessments. Turns a
+   catalogue into a clinical shelf reference. Needs careful sourcing (research agents).
+3. **SEO prerender** — hash routes are crawler-invisible; a small prerender step would make
+   the atlas findable. Architecture change, do deliberately.
+4. **Client handout polish** — the print-handout button exists on condition drawers but the
+   printed output has never been eyeballed in a real browser (the pane cannot print).
+5. **Case library** — one worked case per setting; best written after practitioner reviews
+   start arriving so the cases can be checked.
+6. **Gated/design:** F39 second half (FLIP filtering, theme morph, toast — needs a foreground
+   browser tab), F41 "Occupation Compass" signature artifact, F44 remaining drawn objects,
+   Spanish track (owner decision), billing/documentation chapter (CPT copyright care needed).
+
+**Known non-blocking gaps:** 19 directory entries (mostly small podcasts) have no stable
+public URL — they render a "search the name" fallback instead of a link. Several treatment
+sources point at publisher/database hubs rather than deep links. BLS figures in the student's
+shelf are search-excerpt-sourced (bls.gov blocks automated fetches) and say so inline.

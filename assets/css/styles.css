@@ -1296,3 +1296,5 @@ kbd { font-family: var(--mono); font-size: var(--text-sm); font-variant-numeric:
 .study-done { margin: auto; text-align: center; }
 .study-done-head { font-family: var(--serif); font-size: 1.4rem; margin: 0 0 6px; color: var(--ink); }
 @media (max-width: 640px) { .study-q { font-size: 1.2rem; } .study-controls { flex-direction: column; } }
+/* No physical keyboard on touch — the shortcut hints are noise there. */
+@media (pointer: coarse) { .study-controls kbd { display: none; } }

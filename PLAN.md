@@ -1,4 +1,22 @@
-# PLAN.md — The OT Atlas: UX/UI overhaul
+# PLAN.md
+
+> ## ⚠️ STATE OF PLAY — read this first (2026-07-19)
+> This plan grew across many sessions; **individual items below may describe a smaller app than
+> exists now.** Current ground truth:
+> - **17 chapters / routes**, numbered 01–17 in nav order (F59 renumber). Verification bar is a
+>   **17-route sweep + zero console errors**, not 12.
+> - **Deployed:** https://helperstudiostar.github.io/ot-atlas/ — GitHub Pages, auto-deploys on
+>   push to `main` (repo: helperstudiostar/ot-atlas). Corrections arrive as GitHub Issues.
+> - **Review model: OPEN PRACTITIONER REVIEW** (REVIEWING.md), *not* paid clinician sign-off —
+>   owner decision 2026-07-19. Anywhere this plan says "PENDING CLINICIAN SIGN-OFF", read
+>   "open for practitioner review".
+> - **Counts:** 66 conditions · 58 assessments · 66 glossary terms · 130 abbreviations ·
+>   148 directory entries · 76 bulletin notes · 95 interventions.
+> - `sw.js` CACHE is at **v35** — bump it on ANY asset edit, and bump AGAIN if you edit after
+>   a bump (this footgun bit three times in one session).
+> - Chapters 11–17 (directory, bulletin, treatments, clients, toolkit, study cards, student's
+>   shelf) are NOT described in the Phase 1–4 sections below — they were added later. See
+>   PROGRESS.md entries F50–F59 and HANDOFF.md for those. — The OT Atlas: UX/UI overhaul
 
 > Read me first. One item per session. Evidence for every claim lives in PROGRESS.md.
 
@@ -10,7 +28,7 @@
 2. **Project type:** 100% static, no-build educational reference web app (health education /
    occupational therapy). Stack: single `index.html` + vanilla JS (`assets/js/app.js`, hash
    router) + data files populating a global `OT` namespace + one CSS file. No dependencies,
-   no framework, no server code. Already has: 12 routes, rigor/evidence metadata layer,
+   no framework, no server code. Already has (2026-07-19): 17 routes, rigor/evidence metadata layer,
    Public⇄Clinical dual mode, plain-language toggle, WCAG-focused a11y layer (all verified
    in prior sessions — see HANDOFF.md + BUILDLOG.md).
 3. **Primary user goal (dual, by audience):**
@@ -69,7 +87,7 @@
       F32 (contour-field hero), F33 (View-Transition routes), + craft fixes. See Phase 4 section
       below + PROGRESS.md evidence. **Phase 4 queue is now the active queue.**
 - [ ] **REMAINING needing input beyond code:** F19 progressive disclosure + F27 content gaps (both
-      need CLINICIAN SIGN-OFF for plain-language / new clinical text) · F28 og:image PNG (image tooling).
+      need PRACTITIONER REVIEW for plain-language / new clinical text — see REVIEWING.md) · F28 og:image PNG (image tooling).
 
 ### Model assignment (owner directive 2026-07-03)
 | Model | Use for | Effort |
@@ -93,7 +111,7 @@ Rule of thumb: if the item says "implement exactly this in this function," Sonne
 | Dual mode + plain language | Public⇄Clinical + plain toggle, persisted, verified. |
 | Accessibility base | Labels, focus trap, live-region announcements, combobox search, aria-current, prefers-contrast/forced-colors, AA contrast (measured 6.7–14.9:1). |
 | Visual identity | Custom "warm clinical craft" system (Fraunces/Hanken/Spline, teal+clay, grain texture, custom SVG brand) — distinct, not generic. |
-| Integrity | Zero console errors across all 12 routes (re-verified every session). |
+| Integrity | Zero console errors across all 17 routes (re-verified every session). |
 
 ### B. Backlog — audit findings (unprioritised; Phase 2 will number & sequence)
 
@@ -430,7 +448,7 @@ uniform-card grids anywhere.
 - **Verify:** each collapsed element computes to EXACTLY its bucket token; deltas match the
   expectations above (≤1px everywhere except the deliberate 2xs rise, +0.6–2.0px — enumerate the
   risen selectors in PROGRESS.md); screenshot diff home/conditions/drawer/toolkit both themes; the
-  eyebrow/chip/badge rows must not wrap differently at 375px; 12-route sweep node counts unchanged
+  eyebrow/chip/badge rows must not wrap differently at 375px; 17-route sweep node counts unchanged
   (CSS-only); 0 console errors.
 - **Risk/rollback:** global visual change → work token-by-token, screenshot after each role group;
   rollback = revert the CSS diff.
@@ -450,7 +468,7 @@ uniform-card grids anywhere.
   "06 ·" prefix inline in the eyebrow text — reclaims identity without costing a hero line.
   (4) Library masthead variation: on conditions/assessments move the search/filter input UP into
   the masthead row beside the title (the audit's "vary header composition on the two library pages").
-- **Verify:** all 12 routes show group-correct accent (screenshot 4 groups × both themes); AA ≥4.5:1
+- **Verify:** all 17 routes show group-correct accent (screenshot 4 groups × both themes); AA ≥4.5:1
   on every accent text (measure); coord visible at 375px in its inline form, hero subline still
   above fold; masthead search still filters (type "strok" → count updates) AND the masthead row
   does not wrap badly at 375px (screenshot); sweep + 0 errors.
@@ -538,7 +556,7 @@ uniform-card grids anywhere.
   the headers of the other 11 pages. Durations from `--dur-*` only.
 - **Verify:** cards visible with animations OFF (eval: toggle `Emulation.setEmulatedMedia` PRM or
   strip the @supports via a test stylesheet — content must be fully visible either way); Chrome
-  preview shows reveal on scroll (assessments page); 12-route sweep unchanged counts; 0 errors.
+  preview shows reveal on scroll (assessments page); 17-route sweep unchanged counts; 0 errors.
 - **Rollback:** delete the two CSS blocks + class additions.
 
 ### 21. [F39] Interaction choreography pack — MEDIUM RISK — **MODEL: OPUS, medium**
@@ -636,21 +654,21 @@ uniform-card grids anywhere.
 - **Verify:** home screenshot both themes — zero identical-card grids remain above the fold;
   contents index rows navigate correctly (click 3 → correct routes); pathway hierarchy visible at
   375px without burying "I'm looking for help"; radius/pill/shadow greps show only tokens; the
-  label-role demotion doesn't break chip wrapping at 375px; 12-route sweep; 0 console errors;
+  label-role demotion doesn't break chip wrapping at 375px; 17-route sweep; 0 console errors;
   the owner slop-test question answered in PROGRESS.md with the screenshot.
 - **Rollback:** renderHome diff + CSS block are contained; revert both.
 
 ### 26d. ✅ DONE (Fable, 2026-07-09) [F47] Discipline profiles + "More about…" expansions
 > Owner: "missing key info per practice + enable expansion to learn more." Vetted international
 > profiles (who/where/when/specialties/team/training) + card alias lines + accordion expansions
-> on foundations. ⚠️ `foundations.js rows[].alias/more` **PENDING CLINICIAN SIGN-OFF — on the F27
+> on foundations. ⚠️ `foundations.js rows[].alias/more` **OPEN FOR PRACTITIONER REVIEW (REVIEWING.md) — on the F27
 > checklist with the F46 overlaps.** Visual spot-check screenshot due at next session start
 > (preview screenshot channel wedged; functional evidence complete in PROGRESS.md). CACHE v11.
 
 ### 26c. ✅ DONE (Fable, 2026-07-09) [F46] OT/PT/SLP overlap Venn (owner: "show the overlaps")
 > Research-grounded (AOTA/APTA/ASHA + .gov, adversarially accuracy-checked) overlap zones added to
 > the foundations comparison as a wobbly-line Venn + accessible zone list. ⚠️ The 16 zone items in
-> `foundations.js vsOthers.overlaps` are **PENDING CLINICIAN SIGN-OFF — add to the F27 review
+> `foundations.js vsOthers.overlaps` are **OPEN FOR PRACTITIONER REVIEW (REVIEWING.md) — add to the F27 review
 > checklist.** Contested boundaries deliberately soft-worded (dysphagia: "roles vary by setting").
 > Evidence in PROGRESS.md. CACHE v9.
 
@@ -736,7 +754,7 @@ Every item's Files list implicitly includes **`sw.js` (CACHE bump, always — an
 > clinical text; keep `[hidden]{display:none!important}`; the icon helper is `icn(key)` in
 > app.js and the sprite lives in index.html.
 > Verify with the item's "Verify" recipe using the preview tools (`preview_start "ot-atlas"`,
-> port 4178) + a 12-route sweep + zero console errors — paste ACTUAL output into PROGRESS.md,
+> port 4178) + a 17-route sweep + zero console errors — paste ACTUAL output into PROGRESS.md,
 > never claim success without it. If anything is ambiguous, write it under "Open Questions"
 > in PROGRESS.md and stop rather than guessing.
 > Finish: completion entry in PROGRESS.md (timestamp, files, evidence, exact next item), then
@@ -764,14 +782,14 @@ Every item's Files list implicitly includes **`sw.js` (CACHE bump, always — an
   H3→H2 and drawer subheads H4→H3 across the app.js render functions AND move the matching CSS
   (`.card h3`, `.drawer-body h4`, `.itemcard h3`, callouts, tool outputs — heading levels are
   styled by TAG, so every retag needs its CSS selector moved too). Medium effort, needs a full
-  12-route + drawer visual re-verify. Opus, medium.
+  17-route + drawer visual re-verify. Opus, medium.
 
 ### Bigger bets from the 2026-07-03 audit workflow
 DONE (Opus, 2026-07-03): **F21** related videos · **F22** ARIA tabs · **F23** share link ·
 **F24** iOS scroll lock · **F25** print/handout stylesheet · **F26** glossary bridge ·
 **F28 (part)** last-reviewed date · **F29** related conditions in drawer (new, additive).
 ALSO DONE: **F20** heading hierarchy (Opus, 2026-07-03) — global h3→h2/h4→h3 shift + CSS moves;
-zero skips on all 12 routes + both drawers, zero visual change (font-size parity verified).
+zero skips on all 12 routes (at the time; now 17) + both drawers, zero visual change (font-size parity verified).
 ALSO DONE: **F18** on-this-page TOC (Opus, 2026-07-03) — auto-built from `.page > h2`, appears on
 the 5 long prose pages, router-safe jump + focus move, AA-clean.
 ALSO DONE: **F10** PWA — manifest.json + versioned cache-first `sw.js` + registration + SVG icon
@@ -779,7 +797,7 @@ ALSO DONE: **F10** PWA — manifest.json + versioned cache-first `sw.js` + regis
 capable, console clean. **Standing rule now in the session protocol: bump `sw.js` CACHE on ANY
 asset edit.** SVG-icon caveat: some older/iOS browsers prefer PNG install icons (accepted).
 REMAINING: F19 (progressive disclosure — needs plain-language content sign-off), F27 (content
-gaps — needs clinician sign-off), F28 (og:image PNG — needs image tooling). These 3 all need
+gaps — needs practitioner review), F28 (og:image PNG ✅ DONE 2026-07-19). These need
 input beyond code.
 - **F21 — ✅ DONE (Opus, 2026-07-03) related-video cross-links in condition drawers.** `openCondition` links to assessments/
   orgs but never the topic-matched in-app videos that exist. Map condition category→video bucket
@@ -803,7 +821,7 @@ input beyond code.
   contracture, edema/oedema, micrographia, tenodesis, mod-I, don/doff). Add plain entries to
   resources.js AND generalise `linkifyGlossary` to accept a container + call it in `renderClients`.
   High value for families. Opus, M.
-- **F27 — content coverage gaps (FLAG for clinician sign-off; do NOT touch rigor.js ratings).**
+- **F27 — content coverage gaps (FLAG for practitioner review via REVIEWING.md; do NOT touch rigor.js ratings).**
   Missing: pelvic health/continence, adult dysphagia/mealtime, oncology/lymphedema (AOTA growth
   areas); free cognitive/mood screens (SLUMS, Clock-Drawing, PHQ-9/GAD-7) and a fatigue measure;
   Toglia Dynamic Interactional/Multicontext + CO-OP frames. New clinical text needs review. Fable/Opus, L.
@@ -816,7 +834,7 @@ input beyond code.
 1. **Item 16 [F34]** — type-scale + tracking consolidation (Opus, high). ← next code item
 2. **Item 17 [F35]** — chapter identity rollout (Opus, medium); then the queue table in Phase 4.
 3. **Input-gated:** F41 Occupation Compass (Fable session, owner ping) · F42 submissions ·
-   F19/F27 (clinician sign-off) · F28/F42b og:image PNG (image tooling).
+   F19/F27 (practitioner review via REVIEWING.md) · F28/F42b og:image PNG ✅ DONE 2026-07-19.
 ⚠️ **BEFORE editing/verifying: cache-first service worker.** Bump `sw.js` `CACHE` (at
 `ot-atlas-v14` as of 2026-07-16) on ANY asset edit or the preview shows STALE output. (See sw.js / session
 protocol / the `ot-atlas-service-worker` memory.)

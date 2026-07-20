@@ -40,10 +40,12 @@ Works offline (fonts and YouTube thumbnails simply fall back gracefully without 
 | **Video library** | both | 60+ curated videos & 8 channels organised by topic (real verified links + live topic searches) |
 | **For clients & families** | clients/public | “Could OT help?”, what to expect, how to find an OT, self‑management strategies, rights & advocacy |
 | **Interactive toolkit** | both | OT self‑screener, COAST/SMART goal writer, PICO builder, activity‑analysis worksheet, energy‑conservation planner |
-| **Resources & glossary** | both | Professional organisations + a 58‑term glossary |
+| **Resources & glossary** | both | Professional organisations, a 66‑term glossary and a 130‑entry abbreviation decoder |
 | **The OT directory** | both | 148 external resources — YouTube channels, CEU providers, websites, podcasts, orgs, exam prep, communities — each with who runs it, prices, reputation and an honest **bias note** (curated + adversarially verified 2026‑07) |
 | **What's changed** | both | A dated bulletin of profession / licensure / evidence / funding changes (2023→, US‑first + global), each note sourced with enacted‑vs‑proposed status |
-| **Treatments & protocols** | students/practitioners | 95 interventions & protocols on the atlas's five‑step evidence scale — what each is, trial‑specified doses, what research / practitioners / clients say, training costs, cautions (pending clinician review) |
+| **Treatments & protocols** | students/practitioners | 95 interventions & protocols on the atlas's five‑step evidence scale — what each is, trial‑specified doses, what research / practitioners / clients say, training costs, cautions (open for practitioner review) |
+| **Study cards** | students/practitioners | ~350 flashcards generated from the atlas's own data (conditions · assessments · treatments · glossary), with recycling of missed cards and keyboard review |
+| **The student's shelf** | students | NBCOT exam, fieldwork & the capstone, OT vs OTA, careers & pay — with every figure's sourcing stated |
 
 Plus: a **Public ⇄ Clinical** audience switch and a **plain‑language** toggle; an
 **evidence‑rigor layer** — every condition, assessment and EBP finding carries an
@@ -66,14 +68,16 @@ assets/
       foundations.js       # what OT is, history, profession, OTPF‑4 domain, OT process
       models.js            # models of practice + frames of reference
       reasoning.js         # clinical reasoning, documentation, goals, worked case
-      conditions.js        # 51-condition library
-      assessments.js       # 41 standardised assessments
+      conditions.js        # 66-condition library
+      assessments.js       # 58 standardised assessments
       evidence.js          # EBP steps, levels, databases, studies, journals
       videos.js            # curated video library + channels
-      resources.js         # orgs, client-facing guidance, glossary
+      resources.js         # orgs, client-facing guidance, 66-term glossary
       directory.js         # 148 external resources w/ prices, reputation, bias notes
       bulletin.js          # "What's changed" — dated profession/evidence/licensure log
       interventions.js     # 95 treatments/protocols, evidence-rated + perspectives
+      abbreviations.js     # 130-entry abbreviation decoder
+      studenthub.js        # NBCOT, fieldwork, OT vs OTA, careers & pay
       rigor.js             # evidence ratings/sources/bias per entry + country facts (loads last)
 .claude/
   launch.json              # preview server config
